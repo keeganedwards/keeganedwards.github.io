@@ -85,15 +85,6 @@ a { color: inherit; text-decoration: none; }
 
 .menu-toggle {
   display: none;
-  min-height: 34px;
-  border: 2px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--panel-lighter);
-  color: var(--ink);
-  padding: 6px 11px;
-  font-size: 13px;
-  font-weight: 800;
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.44);
 }
 
 .nav-links {
@@ -102,6 +93,7 @@ a { color: inherit; text-decoration: none; }
 
 .nav button,
 .nav a,
+.menu-toggle,
 .close {
   min-height: 34px;
   border: 2px solid var(--line);
@@ -591,19 +583,33 @@ h2 {
   }
 
   .nav {
+    margin-left: auto;
+    justify-content: flex-end;
+  }
+
+  .nav-links {
     display: none;
+    order: 3;
     width: 100%;
-    justify-content: flex-start;
-    padding-top: 8px;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .nav.open {
+    width: 100%;
+    padding-top: 8px;
+    justify-content: flex-start;
+  }
+
+  .nav.open .nav-links {
     display: flex;
   }
 
-  .nav a,
-  .nav button {
+  .nav-links a {
     width: 100%;
+  }
+
+  .nav button {
     justify-content: flex-start;
     text-align: left;
   }

@@ -38,19 +38,12 @@ export default function App() {
             <span className="brand-name">{data.brand.name}</span>
             <span className="brand-title">{data.brand.title}</span>
           </a>
-          <button
-            className="menu-toggle"
-            type="button"
-            aria-expanded={menuOpen}
-            aria-controls="mainNav"
-            onClick={() => setMenuOpen((isOpen) => !isOpen)}
-          >
-            Menu
-          </button>
           <nav className={`nav ${menuOpen ? "open" : ""}`} id="mainNav" aria-label="Main navigation">
-            {data.games.map((game) => (
-              <a href={`#${game.id}`} key={game.id} onClick={() => setMenuOpen(false)}>{game.title}</a>
-            ))}
+            <span className="nav-links" id="topGameLinks">
+              {data.games.map((game) => (
+                <a href={`#${game.id}`} key={game.id} onClick={() => setMenuOpen(false)}>{game.title}</a>
+              ))}
+            </span>
             <button
               type="button"
               onClick={() => {
@@ -59,6 +52,15 @@ export default function App() {
               }}
             >
               About
+            </button>
+            <button
+              className="menu-toggle"
+              type="button"
+              aria-expanded={menuOpen}
+              aria-controls="topGameLinks"
+              onClick={() => setMenuOpen((isOpen) => !isOpen)}
+            >
+              Menu
             </button>
           </nav>
         </div>

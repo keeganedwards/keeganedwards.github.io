@@ -16,12 +16,12 @@
           <span class="brand-name" id="brandName">Keegan Edwards</span>
           <span class="brand-title" id="brandTitle">Technical Artist</span>
         </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainNav" data-menu-toggle>
-          Menu
-        </button>
         <nav class="nav" id="mainNav" aria-label="Main navigation" data-main-nav>
           <span class="nav-links" id="topGameLinks"></span>
           <button type="button" data-open="about">About</button>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="topGameLinks" data-menu-toggle>
+            Menu
+          </button>
         </nav>
       </div>
     </header>
@@ -257,6 +257,7 @@
         menuToggle.setAttribute("aria-expanded", String(isOpen));
       });
       mainNav.addEventListener("click", (event) => {
+        if (event.target.closest("[data-menu-toggle]")) return;
         if (event.target.closest("a, button")) {
           mainNav.classList.remove("open");
           menuToggle.setAttribute("aria-expanded", "false");
@@ -275,4 +276,3 @@
     </script>
   </body>
 </html>
-
