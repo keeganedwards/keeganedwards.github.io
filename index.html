@@ -4,961 +4,487 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Keegan Edwards | Technical Artist</title>
-    <meta
-      name="description"
-      content="Portfolio site for Keegan Edwards, a technical artist focused on performance, tooling, and content pipelines."
-    >
-    <style>
-      :root {
-        --bg: #09090b;
-        --panel: rgba(24, 24, 27, 0.8);
-        --panel-soft: rgba(39, 39, 42, 0.35);
-        --line: rgba(82, 82, 91, 0.55);
-        --line-strong: rgba(113, 113, 122, 0.85);
-        --text: #f4f4f5;
-        --muted: #a1a1aa;
-        --muted-strong: #d4d4d8;
-        --accent: #d97706;
-        --accent-soft: rgba(217, 119, 6, 0.14);
-        --shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
-        --radius: 22px;
-        --radius-sm: 16px;
-        --content-width: 1120px;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-        color: var(--text);
-        background:
-          radial-gradient(circle at top, rgba(217, 119, 6, 0.12), transparent 30%),
-          linear-gradient(180deg, #111114 0%, var(--bg) 32%, #050507 100%);
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      button {
-        font: inherit;
-      }
-
-      img {
-        display: block;
-        max-width: 100%;
-      }
-
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        border-bottom: 1px solid var(--line);
-        background: rgba(9, 9, 11, 0.86);
-        backdrop-filter: blur(16px);
-      }
-
-      .header-inner,
-      .shell,
-      .footer-inner {
-        width: min(calc(100% - 32px), var(--content-width));
-        margin: 0 auto;
-      }
-
-      .header-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 18px 0;
-      }
-
-      .brand {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: baseline;
-        gap: 10px;
-      }
-
-      .brand-name {
-        font-size: 0.95rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-      }
-
-      .brand-role {
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .nav-link {
-        border: 1px solid transparent;
-        border-radius: 999px;
-        padding: 8px 14px;
-        color: var(--muted-strong);
-        transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
-      }
-
-      .nav-link:hover,
-      .nav-link.active {
-        border-color: var(--line);
-        background: var(--panel-soft);
-        color: var(--text);
-      }
-
-      .shell {
-        padding: 48px 0 72px;
-      }
-
-      .page {
-        display: grid;
-        gap: 28px;
-      }
-
-      .page-title h1 {
-        margin: 0;
-        font-size: clamp(2rem, 4vw, 3.4rem);
-        line-height: 1.05;
-        letter-spacing: -0.04em;
-      }
-
-      .page-title p {
-        max-width: 760px;
-        margin: 14px 0 0;
-        color: var(--muted);
-        font-size: 1rem;
-        line-height: 1.7;
-      }
-
-      .hero {
-        display: grid;
-        gap: 18px;
-        padding: 32px;
-        border: 1px solid var(--line);
-        border-radius: calc(var(--radius) + 6px);
-        background:
-          linear-gradient(135deg, rgba(39, 39, 42, 0.7), rgba(24, 24, 27, 0.65)),
-          rgba(10, 10, 12, 0.85);
-        box-shadow: var(--shadow);
-      }
-
-      .hero-kicker {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        width: fit-content;
-        padding: 7px 12px;
-        border: 1px solid rgba(217, 119, 6, 0.3);
-        border-radius: 999px;
-        background: var(--accent-soft);
-        color: #fed7aa;
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .hero-grid {
-        display: grid;
-        gap: 24px;
-        grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
-      }
-
-      .hero-copy p {
-        margin: 0;
-        max-width: 760px;
-        color: var(--muted);
-        line-height: 1.8;
-      }
-
-      .cta-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 22px;
-      }
-
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        min-height: 44px;
-        padding: 10px 16px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: var(--panel-soft);
-        color: var(--text);
-        cursor: pointer;
-        transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
-      }
-
-      .button:hover {
-        transform: translateY(-1px);
-        border-color: var(--line-strong);
-      }
-
-      .button.primary {
-        border-color: rgba(217, 119, 6, 0.48);
-        background: linear-gradient(180deg, rgba(245, 158, 11, 0.18), rgba(217, 119, 6, 0.12));
-      }
-
-      .hero-facts {
-        display: grid;
-        gap: 12px;
-      }
-
-      .stat-card,
-      .card,
-      .note,
-      .info-panel,
-      .placeholder {
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: var(--panel);
-      }
-
-      .stat-card {
-        padding: 18px 20px;
-      }
-
-      .stat-card strong {
-        display: block;
-        font-size: 1.6rem;
-        letter-spacing: -0.03em;
-      }
-
-      .stat-card span {
-        display: block;
-        margin-top: 6px;
-        color: var(--muted);
-        line-height: 1.5;
-      }
-
-      .section-heading {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
-        gap: 16px;
-      }
-
-      .section-heading h2 {
-        margin: 0;
-        font-size: 1.3rem;
-        letter-spacing: -0.03em;
-      }
-
-      .section-heading p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.6;
-      }
-
-      .portfolio-grid,
-      .detail-grid,
-      .about-grid,
-      .skills-grid,
-      .extra-grid {
-        display: grid;
-        gap: 18px;
-      }
-
-      .portfolio-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .portfolio-card {
-        display: grid;
-        overflow: hidden;
-        cursor: pointer;
-        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .portfolio-card:hover {
-        transform: translateY(-4px);
-        border-color: var(--line-strong);
-        box-shadow: var(--shadow);
-      }
-
-      .portfolio-card img {
-        aspect-ratio: 16 / 10;
-        object-fit: cover;
-      }
-
-      .portfolio-card-body,
-      .card-body {
-        padding: 20px;
-      }
-
-      .portfolio-card-head {
-        display: flex;
-        align-items: start;
-        justify-content: space-between;
-        gap: 12px;
-      }
-
-      .portfolio-card h3,
-      .card h3,
-      .detail-title,
-      .work-title {
-        margin: 0;
-        letter-spacing: -0.03em;
-      }
-
-      .portfolio-card p,
-      .card p,
-      .note p,
-      .detail-copy,
-      .list,
-      .breadcrumb,
-      .footer-links a,
-      .quick-notes li {
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
-      .chip {
-        flex: 0 0 auto;
-        padding: 5px 10px;
-        border: 1px solid rgba(217, 119, 6, 0.26);
-        border-radius: 999px;
-        color: #fdba74;
-        font-size: 0.78rem;
-      }
-
-      .note {
-        padding: 24px;
-      }
-
-      .note strong {
-        display: block;
-        margin-bottom: 8px;
-        font-size: 0.95rem;
-      }
-
-      .work-layout {
-        display: grid;
-        gap: 26px;
-      }
-
-      .breadcrumb-row {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .breadcrumb {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        font-size: 0.92rem;
-      }
-
-      .hero-image,
-      .extra-image {
-        overflow: hidden;
-        border-radius: var(--radius);
-        border: 1px solid var(--line);
-        background: rgba(24, 24, 27, 0.65);
-      }
-
-      .hero-image img,
-      .extra-image img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-      }
-
-      .detail-grid,
-      .about-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .card {
-        overflow: hidden;
-      }
-
-      .card-body h3,
-      .detail-title {
-        font-size: 1.05rem;
-      }
-
-      .eyebrow {
-        margin-bottom: 8px;
-        color: #d4d4d8;
-        font-size: 0.76rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
-      .stack {
-        display: grid;
-        gap: 18px;
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .skill-card,
-      .info-panel,
-      .placeholder {
-        padding: 20px;
-        border-radius: var(--radius-sm);
-      }
-
-      .skill-card {
-        border: 1px solid var(--line);
-        background: rgba(9, 9, 11, 0.42);
-      }
-
-      .skill-card h3,
-      .info-panel h3 {
-        margin: 0 0 12px;
-        font-size: 1rem;
-      }
-
-      .list,
-      .quick-notes {
-        margin: 0;
-        padding-left: 18px;
-      }
-
-      .link-list {
-        display: grid;
-        gap: 12px;
-      }
-
-      .external-link {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 14px 16px;
-        border: 1px solid var(--line);
-        border-radius: var(--radius-sm);
-        background: rgba(9, 9, 11, 0.42);
-        transition: border-color 0.18s ease, transform 0.18s ease;
-      }
-
-      .external-link:hover {
-        transform: translateY(-1px);
-        border-color: var(--line-strong);
-      }
-
-      .extra-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .placeholder {
-        display: grid;
-        place-items: center;
-        min-height: 220px;
-        border-style: dashed;
-        color: var(--muted);
-        text-align: center;
-        background: rgba(9, 9, 11, 0.3);
-      }
-
-      .footer {
-        border-top: 1px solid var(--line);
-        background: rgba(9, 9, 11, 0.65);
-      }
-
-      .footer-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 24px 0 40px;
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-
-      .footer-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-      }
-
-      .muted {
-        color: var(--muted);
-      }
-
-      .hidden {
-        display: none;
-      }
-
-      @media (max-width: 980px) {
-        .hero-grid,
-        .portfolio-grid,
-        .detail-grid,
-        .about-grid,
-        .skills-grid,
-        .extra-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .header-inner,
-        .footer-inner,
-        .section-heading,
-        .breadcrumb-row {
-          align-items: start;
-          flex-direction: column;
-        }
-
-        .shell {
-          padding-top: 28px;
-        }
-
-        .hero,
-        .portfolio-card-body,
-        .card-body,
-        .note,
-        .skill-card,
-        .info-panel,
-        .placeholder {
-          padding: 18px;
-        }
-
-        .page-title h1 {
-          font-size: 2.2rem;
-        }
-      }
-    </style>
+    <meta name="description" content="Portfolio for Keegan Edwards, Technical Artist.">
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header class="site-header">
-      <div class="header-inner">
-        <div class="brand">
-          <div class="brand-name">Keegan Edwards</div>
-          <div class="brand-role">Technical Artist</div>
-        </div>
-        <nav class="nav" aria-label="Primary">
-          <a class="nav-link" data-route-link href="#/">Home</a>
-          <a class="nav-link" data-route-link href="#/about">About</a>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#top" aria-label="Keegan Edwards home">
+          <span class="brand-name" id="brandName">Keegan Edwards</span>
+          <span class="brand-title" id="brandTitle">Technical Artist</span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <button type="button" data-open="about">About</button>
         </nav>
       </div>
     </header>
 
-    <main class="shell">
-      <div id="app"></div>
+    <main id="top">
+      <section class="hero wrap" aria-labelledby="introTitle">
+        <div class="window">
+          <div class="window-bar" aria-hidden="true"></div>
+          <div class="hero-content">
+            <h1 id="introTitle">Technical art, characters, tools, and shipped game work.</h1>
+            <p class="hero-copy" id="introText"></p>
+            <div class="game-jump" id="gameJump"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="wrap" id="portfolio"></div>
     </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        <div id="footer-copy"></div>
-        <div class="footer-links">
-          <a id="footer-linkedin" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a id="footer-resume" href="https://YOUR_RESUME_LINK" target="_blank" rel="noreferrer">Resume</a>
-          <a id="footer-email" href="mailto:you@example.com">Email</a>
-        </div>
-      </div>
+    <footer class="footer wrap">
+      <span id="copyright"></span>
     </footer>
 
-    <script>
-      const BRAND = {
-        name: "Keegan Edwards",
-        title: "Technical Artist"
-      };
+    <div class="modal-backdrop" id="modal" aria-hidden="true">
+      <section class="modal-window" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="window-bar">
+          <div class="window-title" id="modalTitle">Window</div>
+          <button class="close" type="button" aria-label="Close window" data-close>x</button>
+        </div>
+        <div class="modal-content" id="modalContent"></div>
+      </section>
+    </div>
 
-      const ABOUT = {
-        blurb:
-          "Senior Technical Artist focused on environment performance, rendering diagnostics, tools, and pipelines. I bridge art and engineering with production-ready tooling, profiling, and scalable content workflows.",
-        story: [
-          "I specialize in the space where environment art meets engine performance: diagnosing GPU and CPU costs, building tools that keep content scalable, and partnering with rendering and shading engineers to make fixes stick.",
-          "This template is ready for your real project history, shipped titles, and measurable outcomes. Replacing the placeholders with your production examples will make the site feel immediately personal."
-        ],
-        skills: [
+    <script>
+      const DATA = {
+        brand: {
+          name: "Keegan Edwards",
+          title: "Senior Technical Artist",
+          email: "mailto:keegan.edwards@gmail.com",
+          linkedin: "https://www.linkedin.com/in/keegan-edwards/",
+          resume: "https://media.licdn.com/dms/image/v2/D562DAQESXdsCxMWtnQ/profile-treasury-document-images_1280/B56ZVnUfPfGsAU-/1/1741195180682?e=1778716800&v=beta&t=D638ywrxIweerKjrIsqBV2RGnJujKU8NjDu6Hzi0f4I"
+        },
+        intro: {
+          title: "Technical art, characters, tools, and shipped game work.",
+          text: "A portfolio organized by game. Each tile opens a project window with custom text and an ordered image gallery."
+        },
+        infoWindows: {
+          portfolio: {
+            title: "Portfolio",
+            text: "Project and image order is controlled by the arrays in index.html. Move an image object up or down in its images array to change gallery order without renaming files."
+          },
+          about: {
+          title: "Keegan Edwards",
+          profileImage: "https://github.com/keeganedwards.png",
+          text: "Technical Artist with shipped work across character art, UI presentation, tools, optimization, and production pipelines."
+        }
+        },
+        games: [
           {
-            title: "Performance and Profiling",
-            bullets: [
-              "Unreal Insights traces for CPU and GPU bottlenecks",
-              "Shadow, lighting, LOD, and culling strategy analysis",
-              "Nanite, VSM, and content-driven optimization passes"
+            id: "multiversus",
+            title: "MultiVersus",
+            banner: "Images/1Multiversus/Banner.jpg",
+            projects: [
+              {
+                id: "multiversus-lighting-material-overhaul",
+                title: "Lighting and Material Overhaul",
+                text: "Visual and character lighting/material work for the MultiVersus presentation overhaul.",
+                images: [
+                  { src: "Images/1Multiversus/1LightingAndMaterialOverhaul/MultiVersusVisualAndCharacterLightingOverhaul.gif", title: "Lighting and Material Overhaul", text: "" }
+                ]
+              },
+              {
+                id: "multiversus-battle-pass-fighter-road",
+                title: "Battle Pass and Fighter Road",
+                text: "UI presentation, transitions, and reward flow work for Battle Pass and Fighter Road.",
+                images: [
+                  { src: "Images/1Multiversus/2BattlePassAndFighterRoad/BattlePass.gif", title: "Battle Pass", text: "" },
+                  { src: "Images/1Multiversus/2BattlePassAndFighterRoad/BattlePassTransitions.gif", title: "Battle Pass Transitions", text: "" },
+                  { src: "Images/1Multiversus/2BattlePassAndFighterRoad/FighterRoad.gif", title: "Fighter Road", text: "" },
+                  { src: "Images/1Multiversus/2BattlePassAndFighterRoad/StoreRewardPopup.gif", title: "Store Reward Popup", text: "" }
+                ]
+              },
+              {
+                id: "multiversus-store",
+                title: "Store",
+                text: "Storefront presentation work including banners, hover states, icons, character presentation, reward transitions, and effects.",
+                images: [
+                  { src: "Images/1Multiversus/3Store/Banners.gif", title: "Banners", text: "" },
+                  { src: "Images/1Multiversus/3Store/HoverOver.gif", title: "Hover States", text: "" },
+                  { src: "Images/1Multiversus/3Store/Icons.gif", title: "Icons", text: "" },
+                  { src: "Images/1Multiversus/3Store/IconsAndCharacters.gif", title: "Icons and Characters", text: "" },
+                  { src: "Images/1Multiversus/3Store/RewardTransitions.gif", title: "Reward Transitions", text: "" },
+                  { src: "Images/1Multiversus/3Store/Start.gif", title: "Store Start", text: "" },
+                  { src: "Images/1Multiversus/3Store/VFX.gif", title: "VFX", text: "" }
+                ]
+              },
+              {
+                id: "multiversus-end-of-game",
+                title: "End Of Game",
+                text: "End-of-game presentation, layout, tools, and match transition work.",
+                images: [
+                  { src: "Images/1Multiversus/4EndOfGame/EndOfGame.gif", title: "End Of Game", text: "" },
+                  { src: "Images/1Multiversus/4EndOfGame/EOGTools.gif", title: "End Of Game Tools", text: "" },
+                  { src: "Images/1Multiversus/4EndOfGame/Layouts.gif", title: "Layouts", text: "" },
+                  { src: "Images/1Multiversus/4EndOfGame/MatchStart.gif", title: "Match Start", text: "" }
+                ]
+              },
+              {
+                id: "multiversus-icon-creator",
+                title: "Icon Creator",
+                text: "Icon and thumbnail tooling work for presentation-ready character and inventory assets.",
+                images: [
+                  { src: "Images/1Multiversus/5IconCreator/ThumbnailTool.gif", title: "Thumbnail Tool", text: "" },
+                  { src: "Images/1Multiversus/5IconCreator/IconCreator.gif", title: "Icon Creator", text: "" },
+                  { src: "Images/1Multiversus/5IconCreator/IconAdjustmentTool.png", title: "Icon Adjustment Tool", text: "" }
+                ]
+              }
             ]
           },
           {
-            title: "Tools and Pipelines",
-            bullets: [
-              "Unreal Editor tools in C++, Python, and Blueprint",
-              "Maya automation, data validation, and batch workflows",
-              "Perforce-friendly tooling and release hygiene"
+            id: "the-last-of-us-part-1",
+            title: "The Last of Us Part I",
+            banner: "Images/2TheLastOfUsPart1/Banner.jpg",
+            projects: [
+              {
+                id: "tlou-part-1-character-asset-browser",
+                title: "Character Asset Browser",
+                text: "Character asset browsing and production support work.",
+                images: [
+                  { src: "Images/2TheLastOfUsPart1/3CharacterAssetBrowser/ivan-miya-t1x-imiya-faction-hunter-z-game.jpg", title: "Character Asset Browser", text: "" }
+                ]
+              }
             ]
           },
           {
-            title: "Rendering Collaboration",
-            bullets: [
-              "Material optimization and shader complexity debugging",
-              "Artifact triage with a rendering-debug mindset",
-              "Cross-discipline support for durable engine-side fixes"
+            id: "ashes-of-creation",
+            title: "Ashes of Creation",
+            banner: "Images/3AshesOfCreation/Banner.png",
+            projects: [
+              {
+                id: "ashes-harbingers",
+                title: "Harbingers",
+                text: "Harbinger presentation and supporting technical art work.",
+                images: [
+                  { src: "Images/3AshesOfCreation/1Harbingers/Harbingers.png", title: "Harbingers", text: "" },
+                  { src: "Images/3AshesOfCreation/1Harbingers/maxresdefault.jpg", title: "Harbingers Preview", text: "" },
+                  { src: "Images/3AshesOfCreation/1Harbingers/Screenshot 2026-04-29 121732.png", title: "Harbingers Screenshot", text: "" }
+                ]
+              },
+              {
+                id: "ashes-hlods",
+                title: "HLODs",
+                text: "Hierarchical LOD setup and visual validation work.",
+                images: [
+                  { src: "Images/3AshesOfCreation/2Hlods/HlodPcitures2.png", title: "HLOD View", text: "" },
+                  { src: "Images/3AshesOfCreation/2Hlods/HlodPcitures4.png", title: "HLOD Comparison", text: "" }
+                ]
+              },
+              {
+                id: "ashes-optimization",
+                title: "Optimization",
+                text: "Optimization-oriented technical art work and scene validation.",
+                images: [
+                  { src: "Images/3AshesOfCreation/3Optimization/HlodPcitures1.png", title: "Optimization View", text: "" },
+                  { src: "Images/3AshesOfCreation/3Optimization/HlodPcitures3.png", title: "Optimization Comparison", text: "" }
+                ]
+              }
+            ]
+          },
+          {
+            id: "the-last-of-us-part-2",
+            title: "The Last of Us Part II",
+            banner: "Images/4TheLastOfUsPart2/Banner.jpg",
+            projects: [
+              {
+                id: "tlou-part-2-ellie",
+                title: "Ellie",
+                text: "Character presentation images for Ellie, including clay, color, and masked views.",
+                images: [
+                  { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-full-clay.jpg", title: "Full Clay", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-full-color.jpg", title: "Full Color", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-masked-color.jpg", title: "Full Masked Color", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-mid-clay.jpg", title: "Mid Clay", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-mid-color.jpg", title: "Mid Color", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-mid-masked.jpg", title: "Mid Masked", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-side-clay.jpg", title: "Side Clay", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-side-color.jpg", title: "Side Color", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-side-masked.jpg", title: "Side Masked", text: "" }
+                ]
+              },
+              {
+                id: "tlou-part-2-prisoners",
+                title: "Prisoners",
+                text: "Prisoner character presentation work shown as an ordered gallery.",
+                images: [
+                  { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0000-layer-comp-1.jpg", title: "Prisoners 01", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0001-layer-comp-2.jpg", title: "Prisoners 02", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0002-layer-comp-3.jpg", title: "Prisoners 03", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0003-layer-comp-4.jpg", title: "Prisoners 04", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0004-layer-comp-5.jpg", title: "Prisoners 05", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0005-layer-comp-6.jpg", title: "Prisoners 06", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0006-layer-comp-7.jpg", title: "Prisoners 07", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0007-layer-comp-8.jpg", title: "Prisoners 08", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0008-layer-comp-9.jpg", title: "Prisoners 09", text: "" }
+                ]
+              },
+              {
+                id: "tlou-part-2-prisoners-escape",
+                title: "Prisoners Escape",
+                text: "Prisoners escape presentation work with captured and masked views.",
+                images: [
+                  { src: "Images/4TheLastOfUsPart2/3Prisoners Escape/keegan-edwards-prisonerscaptured-masked.jpg", title: "Captured Masked", text: "" },
+                  { src: "Images/4TheLastOfUsPart2/3Prisoners Escape/keegan-edwards-prisonerscaptured.jpg", title: "Captured", text: "" }
+                ]
+              }
+            ]
+          },
+          {
+            id: "call-of-duty",
+            title: "Call of Duty",
+            banner: "Images/5CallOfDuty/Banner.jpg",
+            projects: [
+              {
+                id: "cod-splash",
+                title: "Splash",
+                text: "Key art and splash presentation work.",
+                images: [
+                  { src: "Images/5CallOfDuty/1Splash/d20180430-007_DLC_3_Key_Art_1920x762_01.jpg", title: "DLC Key Art", text: "" },
+                  { src: "Images/5CallOfDuty/1Splash/XLWglaOdZUL8Dor76Hy1BQt8AuHB3UUb.jpg", title: "Splash Art", text: "" }
+                ]
+              },
+              {
+                id: "cod-sculpts",
+                title: "Sculpts",
+                text: "Character sculpt presentation work.",
+                images: [
+                  { src: "Images/5CallOfDuty/2Sculpts/aus_infantry.png", title: "Australian Infantry", text: "" },
+                  { src: "Images/5CallOfDuty/2Sculpts/eng_summer.png", title: "English Summer", text: "" },
+                  { src: "Images/5CallOfDuty/2Sculpts/ger_super.png", title: "German Super", text: "" },
+                  { src: "Images/5CallOfDuty/2Sculpts/ger_valk.png", title: "German Valkyrie", text: "" },
+                  { src: "Images/5CallOfDuty/2Sculpts/net_infantry.png", title: "Netherlands Infantry", text: "" },
+                  { src: "Images/5CallOfDuty/2Sculpts/rus_female.png", title: "Russian Female", text: "" },
+                  { src: "Images/5CallOfDuty/2Sculpts/usa_monty.png", title: "USA Monty", text: "" },
+                  { src: "Images/5CallOfDuty/2Sculpts/usa_winter.png", title: "USA Winter", text: "" }
+                ]
+              },
+              {
+                id: "cod-ingame",
+                title: "Ingame",
+                text: "In-game character presentation work.",
+                images: [
+                  { src: "Images/5CallOfDuty/3Ingame/EnglishComando.png", title: "English Commando", text: "" },
+                  { src: "Images/5CallOfDuty/3Ingame/EnglishDesert.png", title: "English Desert", text: "" },
+                  { src: "Images/5CallOfDuty/3Ingame/EnglishPilot.png", title: "English Pilot", text: "" },
+                  { src: "Images/5CallOfDuty/3Ingame/GermanOfficer.png", title: "German Officer", text: "" },
+                  { src: "Images/5CallOfDuty/3Ingame/GermanOfficer2.png", title: "German Officer 2", text: "" },
+                  { src: "Images/5CallOfDuty/3Ingame/NetherlandsInfantry.png", title: "Netherlands Infantry", text: "" },
+                  { src: "Images/5CallOfDuty/3Ingame/PolishInfantry.png", title: "Polish Infantry", text: "" },
+                  { src: "Images/5CallOfDuty/3Ingame/RussianInfantry.png", title: "Russian Infantry", text: "" },
+                  { src: "Images/5CallOfDuty/3Ingame/RussianResistance.png", title: "Russian Resistance", text: "" }
+                ]
+              }
             ]
           }
-        ],
-        links: {
-          linkedin: "https://www.linkedin.com/in/YOUR_LINKEDIN",
-          resume: "https://YOUR_RESUME_LINK",
-          email: "mailto:you@example.com"
-        }
+        ]
       };
-
-      const PORTFOLIO = [
-        {
-          id: "shadow-depth-optimization",
-          title: "Shadow Depth Pass Optimization",
-          short:
-            "Brought Shadow Depths from about 4 ms to 2 ms using content and cvar tuning, trace-driven validation, and scalable constraints.",
-          thumb:
-            "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=60",
-          hero:
-            "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=60",
-          description:
-            "A practical optimization pass focused on shadow casting content, cascade strategy, and measurable wins through Unreal Insights and stat GPU.",
-          problem:
-            "GPU Shadow Depths was a top cost in representative gameplay scenes, especially with dense foliage and multiple dynamic lights.",
-          solution:
-            "I audited shadow casters, improved LODs and cull behavior, tuned resolution and cascades, and validated the changes through comparable performance captures.",
-          extra: [
-            {
-              title: "Breakdown Capture",
-              image:
-                "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1600&q=60",
-              caption:
-                "Use this slot for before and after captures, trace screenshots, or annotated GPU breakdowns."
-            }
-          ]
-        },
-        {
-          id: "world-partition-tooling",
-          title: "World Partition Content Tooling",
-          short:
-            "Editor tooling to batch-fix streaming metadata, validate actor labels, and enforce naming conventions across large maps.",
-          thumb:
-            "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=800&q=60",
-          hero:
-            "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=1600&q=60",
-          description:
-            "Automation utilities to keep large worlds consistent across naming, streaming ranges, validation, and batch operations.",
-          problem:
-            "Large teams and procedural placement created inconsistencies in naming, streaming settings, and validation, which increased review overhead and caused regressions.",
-          solution:
-            "I shipped editor utilities and Python scripts to enforce conventions, automate bulk fixes, and catch issues earlier in the content pipeline.",
-          extra: []
-        },
-        {
-          id: "maya-skinweights",
-          title: "Maya Skin Weights Export and Import Pipeline",
-          short:
-            "JSON-based skin weight exporter and importer with robust influence matching, batch operations, and actionable error reporting.",
-          thumb:
-            "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=800&q=60",
-          hero:
-            "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1600&q=60",
-          description:
-            "A lightweight, production-minded skin weights pipeline built for repeatability, resilience, and debugging.",
-          problem:
-            "Artists needed a dependable way to transfer skin weights between meshes in different scenes while preserving influence fidelity.",
-          solution:
-            "I implemented export and import utilities that serialize weights and influences to JSON, handle missing influences gracefully, and provide readable logs.",
-          extra: []
-        }
-      ];
-
-      function getRoute() {
-        const hash = window.location.hash || "#/";
-        const parts = hash.replace(/^#/, "").split("/").filter(Boolean);
-
-        if (parts.length === 0) return { name: "home" };
-        if (parts[0] === "about") return { name: "about" };
-        if (parts[0] === "work" && parts[1]) return { name: "work", id: parts[1] };
-        return { name: "home" };
-      }
+      const modal = document.getElementById("modal");
+      const modalWindow = modal.querySelector(".modal-window");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalContent = document.getElementById("modalContent");
 
       function escapeHtml(value) {
-        return String(value)
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#39;");
+        return String(value || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
       }
 
-      function pageTitle(title, subtitle) {
-        return `
-          <section class="page-title">
-            <h1>${escapeHtml(title)}</h1>
-            ${subtitle ? `<p>${escapeHtml(subtitle)}</p>` : ""}
+      function renderSite() {
+        document.title = `${DATA.brand.name} | ${DATA.brand.title}`;
+        document.getElementById("brandName").textContent = DATA.brand.name;
+        document.getElementById("brandTitle").textContent = DATA.brand.title;
+        document.getElementById("introTitle").textContent = DATA.intro.title;
+        document.getElementById("introText").textContent = DATA.intro.text;
+        document.getElementById("copyright").textContent =
+          "(c) " + new Date().getFullYear() + " " + DATA.brand.name;
+
+        document.getElementById("gameJump").innerHTML = DATA.games.map((game) =>
+          `<a class="game-link" href="#${escapeHtml(game.id)}">${escapeHtml(game.title)}</a>`
+        ).join("");
+
+        document.getElementById("portfolio").innerHTML = DATA.games.map((game) => `
+          <section class="section" id="${escapeHtml(game.id)}">
+            <article class="window">
+              <div class="window-bar">
+                <div class="window-title">${escapeHtml(game.title)}</div>
+              </div>
+              <div class="game-banner" style="background-image: url('${escapeHtml(game.banner)}')">
+                <div class="game-banner-inner">
+                  <h2>${escapeHtml(game.title)}</h2>
+                </div>
+              </div>
+              <div class="tile-grid">
+                ${game.projects.map((project) => `
+                  <button class="tile" type="button" data-project="${escapeHtml(project.id)}">
+                    <div class="tile-media">
+                      <img src="${escapeHtml(project.images[0].src)}" alt="${escapeHtml(project.title)}">
+                    </div>
+                    <div class="tile-body">
+                      <h3>${escapeHtml(project.title)}</h3>
+                    </div>
+                  </button>
+                `).join("")}
+              </div>
+            </article>
           </section>
-        `;
-      }
+        `).join("");
 
-      function homePage() {
-        return `
-          <div class="page">
-            <section class="hero">
-              <div class="hero-kicker">Portfolio Site</div>
-              <div class="hero-grid">
-                <div class="hero-copy">
-                  <div class="page-title">
-                    <h1>${escapeHtml(BRAND.name)}</h1>
-                    <p>${escapeHtml(ABOUT.blurb)}</p>
-                  </div>
-                  <div class="cta-row">
-                    <a class="button primary" href="#/about">About Me</a>
-                    <a class="button" href="${escapeHtml(ABOUT.links.resume)}" target="_blank" rel="noreferrer">Resume</a>
-                    <a class="button" href="${escapeHtml(ABOUT.links.email)}">Email</a>
-                  </div>
-                </div>
-                <div class="hero-facts">
-                  <div class="stat-card">
-                    <strong>Performance</strong>
-                    <span>Optimization passes grounded in trace data, content constraints, and measurable results.</span>
-                  </div>
-                  <div class="stat-card">
-                    <strong>Tools</strong>
-                    <span>Editor utilities, automation, and validation workflows that reduce repetitive production work.</span>
-                  </div>
-                  <div class="stat-card">
-                    <strong>Pipelines</strong>
-                    <span>Cross-discipline solutions that help art and engineering move faster together.</span>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="page">
-              <div class="section-heading">
-                <div>
-                  <h2>Selected Work</h2>
-                  <p>Focused case studies in performance, tooling, and technical art workflow design.</p>
-                </div>
-              </div>
-              <div class="portfolio-grid">
-                ${PORTFOLIO.map(portfolioCard).join("")}
-              </div>
-            </section>
-
-            <section class="note">
-              <strong>Ready for your real content</strong>
-              <p>This version is now live as the site homepage. The structure is in place; the next polish pass is swapping placeholder links, text, and images for your final portfolio material.</p>
-            </section>
-          </div>
-        `;
-      }
-
-      function portfolioCard(piece) {
-        return `
-          <article class="portfolio-card card" onclick="window.location.hash='#/work/${escapeHtml(piece.id)}'">
-            <img src="${escapeHtml(piece.thumb)}" alt="${escapeHtml(piece.title)}">
-            <div class="portfolio-card-body">
-              <div class="portfolio-card-head">
-                <h3>${escapeHtml(piece.title)}</h3>
-                <span class="chip">View</span>
-              </div>
-              <p>${escapeHtml(piece.short)}</p>
-            </div>
-          </article>
-        `;
-      }
-
-      function aboutPage() {
-        return `
-          <div class="page">
-            ${pageTitle("About", ABOUT.blurb)}
-            <section class="about-grid">
-              <div class="stack">
-                <article class="card">
-                  <div class="card-body">
-                    <h3>Core Skills</h3>
-                    <div class="skills-grid">
-                      ${ABOUT.skills
-                        .map(
-                          (skill) => `
-                            <section class="skill-card">
-                              <h3>${escapeHtml(skill.title)}</h3>
-                              <ul class="list">
-                                ${skill.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join("")}
-                              </ul>
-                            </section>
-                          `
-                        )
-                        .join("")}
-                    </div>
-                  </div>
-                </article>
-                <article class="card">
-                  <div class="card-body">
-                    <h3>What I Do</h3>
-                    ${ABOUT.story.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}
-                  </div>
-                </article>
-              </div>
-              <aside class="stack">
-                <article class="card">
-                  <div class="card-body">
-                    <h3>Links</h3>
-                    <div class="link-list">
-                      ${externalLink("LinkedIn", ABOUT.links.linkedin, true)}
-                      ${externalLink("Resume", ABOUT.links.resume, true)}
-                      ${externalLink("Email", ABOUT.links.email, false)}
-                    </div>
-                  </div>
-                </article>
-                <section class="info-panel">
-                  <h3>Quick Notes</h3>
-                  <ul class="quick-notes">
-                    <li>Replace the placeholder links with your real profile, resume, and email.</li>
-                    <li>Updating each project with outcomes and numbers will make the site much stronger.</li>
-                    <li>You can add more portfolio entries by extending the PORTFOLIO array in this file.</li>
-                  </ul>
-                </section>
-              </aside>
-            </section>
-          </div>
-        `;
-      }
-
-      function externalLink(label, href, external) {
-        return `
-          <a class="external-link" href="${escapeHtml(href)}" ${external ? 'target="_blank" rel="noreferrer"' : ""}>
-            <span>${escapeHtml(label)}</span>
-            <span class="muted">${external ? "Open" : "Send"}</span>
-          </a>
-        `;
-      }
-
-      function workPage(id) {
-        const piece = PORTFOLIO.find((item) => item.id === id);
-
-        if (!piece) {
-          return `
-            <div class="page">
-              ${pageTitle("Not Found", "That portfolio piece does not exist.")}
-              <div>
-                <a class="button" href="#/">Back to Home</a>
-              </div>
-            </div>
-          `;
-        }
-
-        const extraBlocks = piece.extra.length ? piece.extra : [{}, {}];
-
-        return `
-          <div class="work-layout">
-            <div class="breadcrumb-row">
-              <a class="button" href="#/">Home</a>
-              <div class="breadcrumb">
-                <span>Portfolio</span>
-                <span>/</span>
-                <span>${escapeHtml(piece.title)}</span>
-              </div>
-            </div>
-
-            <section class="page-title">
-              <h1>${escapeHtml(piece.title)}</h1>
-              <p>${escapeHtml(piece.description)}</p>
-            </section>
-
-            <div class="hero-image">
-              <img src="${escapeHtml(piece.hero)}" alt="${escapeHtml(piece.title)}">
-            </div>
-
-            <section class="detail-grid">
-              <article class="card">
-                <div class="card-body">
-                  <h3 class="detail-title">Short Description</h3>
-                  <p class="detail-copy">${escapeHtml(piece.short)}</p>
-                </div>
-              </article>
-              <article class="card">
-                <div class="card-body">
-                  <div class="eyebrow">Problem</div>
-                  <p class="detail-copy">${escapeHtml(piece.problem)}</p>
-                  <div class="eyebrow" style="margin-top: 18px;">Solution</div>
-                  <p class="detail-copy">${escapeHtml(piece.solution)}</p>
-                </div>
-              </article>
-            </section>
-
-            <section class="page">
-              <div class="section-heading">
-                <div>
-                  <h2>Additional Photos and Notes</h2>
-                  <p>Use this area for screenshots, trace captures, annotated diagrams, or implementation notes.</p>
-                </div>
-              </div>
-              <div class="extra-grid">
-                ${extraBlocks
-                  .map(
-                    (block) => `
-                      <article class="card">
-                        <div class="card-body">
-                          <h3>${escapeHtml(block.title || "Placeholder Section")}</h3>
-                          ${
-                            block.image
-                              ? `<div class="extra-image"><img src="${escapeHtml(block.image)}" alt="${escapeHtml(block.title || "Portfolio extra image")}"></div>`
-                              : `<div class="placeholder">Add an image and caption here.</div>`
-                          }
-                          <p>${escapeHtml(block.caption || "Use this area for concise notes, before and after comparisons, or step-by-step breakdowns.")}</p>
-                        </div>
-                      </article>
-                    `
-                  )
-                  .join("")}
-              </div>
-            </section>
-          </div>
-        `;
-      }
-
-      function render() {
-        const route = getRoute();
-        const app = document.getElementById("app");
-        const footerCopy = document.getElementById("footer-copy");
-        const footerLinkedIn = document.getElementById("footer-linkedin");
-        const footerResume = document.getElementById("footer-resume");
-        const footerEmail = document.getElementById("footer-email");
-
-        footerCopy.textContent = "(c) " + new Date().getFullYear() + " " + BRAND.name;
-        footerLinkedIn.href = ABOUT.links.linkedin;
-        footerResume.href = ABOUT.links.resume;
-        footerEmail.href = ABOUT.links.email;
-
-        if (route.name === "about") {
-          app.innerHTML = aboutPage();
-        } else if (route.name === "work") {
-          app.innerHTML = workPage(route.id);
-        } else {
-          app.innerHTML = homePage();
-        }
-
-        document.querySelectorAll("[data-route-link]").forEach((link) => {
-          const active = (window.location.hash || "#/") === link.getAttribute("href");
-          link.classList.toggle("active", active);
+        document.querySelectorAll("[data-project]").forEach((button) => {
+          button.addEventListener("click", () => openProject(button.dataset.project));
         });
       }
 
-      window.addEventListener("hashchange", render);
-      render();
+      function findProject(id) {
+        for (const game of DATA.games) {
+          const project = game.projects.find((item) => item.id === id);
+          if (project) return { game, project };
+        }
+        return null;
+      }
+
+      function openModal(title, content, wide = false) {
+        modalTitle.textContent = title;
+        modalContent.innerHTML = content;
+        modalWindow.classList.toggle("wide", wide);
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      function openProject(id) {
+        const found = findProject(id);
+        if (!found) return;
+        const { game, project } = found;
+        const firstImage = project.images[0];
+
+        openModal(
+          `${game.title} / ${project.title}`,
+          `
+            <div class="project-viewer" data-carousel>
+              <div class="viewer-stage">
+                <img
+                  class="viewer-image"
+                  data-viewer-image
+                  src="${escapeHtml(firstImage.src)}"
+                  alt="${escapeHtml(firstImage.title || project.title)}"
+                >
+                <button class="viewer-arrow viewer-arrow-left" type="button" data-carousel-prev aria-label="Previous image">
+                  &lt;
+                </button>
+                <button class="viewer-arrow viewer-arrow-right" type="button" data-carousel-next aria-label="Next image">
+                  &gt;
+                </button>
+              </div>
+              <div class="thumb-strip" aria-label="Project images">
+                ${project.images.map((image, index) => `
+                  <button
+                    class="thumb-button ${index === 0 ? "active" : ""}"
+                    type="button"
+                    data-carousel-thumb="${index}"
+                    aria-label="Show ${escapeHtml(image.title || project.title)}"
+                  >
+                    <img src="${escapeHtml(image.src)}" alt="">
+                  </button>
+                `).join("")}
+              </div>
+              <section class="project-detail">
+                <h3>${escapeHtml(project.title)}</h3>
+                <div class="description-panel">
+                  <p>${escapeHtml(project.text)}</p>
+                </div>
+              </section>
+            </div>
+          `,
+          true
+        );
+        attachCarousel(project);
+      }
+
+      function attachCarousel(project) {
+        const viewer = modalContent.querySelector("[data-carousel]");
+        if (!viewer) return;
+
+        const image = viewer.querySelector("[data-viewer-image]");
+        const thumbs = Array.from(viewer.querySelectorAll("[data-carousel-thumb]"));
+        let activeIndex = 0;
+
+        function showImage(nextIndex) {
+          activeIndex = (nextIndex + project.images.length) % project.images.length;
+          const nextImage = project.images[activeIndex];
+          image.src = nextImage.src;
+          image.alt = nextImage.title || project.title;
+          thumbs.forEach((thumb, index) => {
+            thumb.classList.toggle("active", index === activeIndex);
+          });
+        }
+
+        viewer.querySelector("[data-carousel-prev]").addEventListener("click", () => {
+          showImage(activeIndex - 1);
+        });
+        viewer.querySelector("[data-carousel-next]").addEventListener("click", () => {
+          showImage(activeIndex + 1);
+        });
+        thumbs.forEach((thumb) => {
+          thumb.addEventListener("click", () => {
+            showImage(Number(thumb.dataset.carouselThumb));
+          });
+        });
+      }
+
+      function openInfo(type) {
+        if (!DATA) return;
+
+        if (type === "about") {
+          openModal("About", `
+            <div class="about-popout">
+              <div class="profile-icon" aria-hidden="true">
+                ${DATA.infoWindows.about.profileImage
+                  ? `<img src="${escapeHtml(DATA.infoWindows.about.profileImage)}" alt="">`
+                  : `<span>KE</span>`}
+              </div>
+              <div class="about-copy">
+                <h2>${escapeHtml(DATA.infoWindows.about.title)}</h2>
+                <p>${escapeHtml(DATA.infoWindows.about.text)}</p>
+              </div>
+              <div class="contact-panel">
+                <h3>Contact</h3>
+                <div class="contact-links">
+                  <a href="${escapeHtml(DATA.brand.email)}">Keegan.Edwards@gmail.com</a>
+                  <a href="${escapeHtml(DATA.brand.linkedin)}" target="_blank" rel="noreferrer">LinkedIn</a>
+                  <a href="${escapeHtml(DATA.brand.resume)}" target="_blank" rel="noreferrer">Resume</a>
+                </div>
+              </div>
+            </div>
+          `);
+        }
+      }
+
+      document.querySelectorAll("[data-open]").forEach((button) => {
+        button.addEventListener("click", () => openInfo(button.dataset.open));
+      });
+
+      document.querySelector("[data-close]").addEventListener("click", closeModal);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
+      });
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeModal();
+      });
+
+      renderSite();
     </script>
   </body>
 </html>
