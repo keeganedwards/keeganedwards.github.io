@@ -18,7 +18,8 @@ window.PORTFOLIO_DATA = {
     about: {
     title: "Keegan Edwards",
     profileImage: "https://github.com/keeganedwards.png",
-    text: `Senior Technical Artist with shipped work across character art, UI presentation, tools, optimization, and production pipelines.`
+    text: `Senior Technical Artist with shipped work across character art, UI presentation, tools, optimization, and production pipelines.
+    `
   }
   },
   games: [
@@ -93,6 +94,14 @@ Storefront presentation work including Asset Previews, Hover states, Icons, char
       banner: "Images/2TheLastOfUsPart1/Banner.jpg",
       bannerPosition: "top",
       projects: [
+        {
+          id: "tlou-part-1-character-asset-browser",
+          title: "Character Asset Browser",
+          text: `Character asset browsing and production support work.`,
+          images: [
+            { src: "Images/2TheLastOfUsPart1/3CharacterAssetBrowser/ivan-miya-t1x-imiya-faction-hunter-z-game.jpg", title: "Character Asset Browser", text: "" }
+          ]
+        },
         {
           id: "tlou-part-1-character-asset-browser",
           title: "Character Asset Browser",
@@ -197,7 +206,7 @@ Storefront presentation work including Asset Previews, Hover states, Icons, char
         {
           id: "cod-splash",
           title: "United Front",
-          text: `Key art and splash presentation work.`,
+          text: `I had the Oportunity to work on splash art for the United Front DLC I posed and contributed to lighting the characters.`,
           images: [
             { src: "Images/5CallOfDuty/1Splash/XLWglaOdZUL8Dor76Hy1BQt8AuHB3UUb.jpg", title: "Splash Art", text: "" },
             { src: "Images/5CallOfDuty/1Splash/d20180430-007_DLC_3_Key_Art_1920x762_01.jpg", title: "DLC Key Art", text: "" },

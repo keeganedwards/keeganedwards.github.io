@@ -25,6 +25,7 @@ function WindowBar({ title, onClose }) {
 
 export default function App() {
   const [modal, setModal] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const data = portfolioData;
 
   if (!data) return null;
@@ -37,11 +38,28 @@ export default function App() {
             <span className="brand-name">{data.brand.name}</span>
             <span className="brand-title">{data.brand.title}</span>
           </a>
-          <nav className="nav" aria-label="Main navigation">
+          <button
+            className="menu-toggle"
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="mainNav"
+            onClick={() => setMenuOpen((isOpen) => !isOpen)}
+          >
+            Menu
+          </button>
+          <nav className={`nav ${menuOpen ? "open" : ""}`} id="mainNav" aria-label="Main navigation">
             {data.games.map((game) => (
-              <a href={`#${game.id}`} key={game.id}>{game.title}</a>
+              <a href={`#${game.id}`} key={game.id} onClick={() => setMenuOpen(false)}>{game.title}</a>
             ))}
-            <button type="button" onClick={() => setModal({ type: "about" })}>About</button>
+            <button
+              type="button"
+              onClick={() => {
+                setModal({ type: "about" });
+                setMenuOpen(false);
+              }}
+            >
+              About
+            </button>
           </nav>
         </div>
       </header>
@@ -49,7 +67,6 @@ export default function App() {
       <main id="top">
         <section className="hero wrap" aria-labelledby="intro-title">
           <div className="window">
-            <WindowBar />
             <div className="hero-content">
               <h1 id="intro-title">{data.intro.title}</h1>
               <div
@@ -68,11 +85,7 @@ export default function App() {
                 <div
                   className={`game-banner ${game.bannerPosition === "top" ? "banner-top" : ""}`}
                   style={{ backgroundImage: `url('${game.banner}')` }}
-                >
-                  <div className="game-banner-inner">
-                    <h2>{game.title}</h2>
-                  </div>
-                </div>
+                />
                 <div className="tile-grid">
                   {game.projects.map((project) => (
                     <button

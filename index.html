@@ -16,8 +16,11 @@
           <span class="brand-name" id="brandName">Keegan Edwards</span>
           <span class="brand-title" id="brandTitle">Technical Artist</span>
         </a>
-        <nav class="nav" aria-label="Main navigation">
-          <span id="topGameLinks"></span>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainNav" data-menu-toggle>
+          Menu
+        </button>
+        <nav class="nav" id="mainNav" aria-label="Main navigation" data-main-nav>
+          <span class="nav-links" id="topGameLinks"></span>
           <button type="button" data-open="about">About</button>
         </nav>
       </div>
@@ -26,7 +29,6 @@
     <main id="top">
       <section class="hero wrap" aria-labelledby="introTitle">
         <div class="window">
-          <div class="window-bar" aria-hidden="true"></div>
           <div class="hero-content">
             <h1 id="introTitle">Technical art, characters, tools, and shipped game work.</h1>
             <div class="hero-copy rich-text" id="introText"></div>
@@ -91,9 +93,6 @@
                 <div class="window-title">${escapeHtml(game.title)}</div>
               </div>
               <div class="game-banner ${game.bannerPosition === "top" ? "banner-top" : ""}" style="background-image: url('${escapeHtml(game.banner)}')">
-                <div class="game-banner-inner">
-                  <h2>${escapeHtml(game.title)}</h2>
-                </div>
               </div>
               <div class="tile-grid">
                 ${game.projects.map((project) => `
@@ -249,6 +248,19 @@
 
       document.querySelectorAll("[data-open]").forEach((button) => {
         button.addEventListener("click", () => openInfo(button.dataset.open));
+      });
+
+      const menuToggle = document.querySelector("[data-menu-toggle]");
+      const mainNav = document.querySelector("[data-main-nav]");
+      menuToggle.addEventListener("click", () => {
+        const isOpen = mainNav.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+      mainNav.addEventListener("click", (event) => {
+        if (event.target.closest("a, button")) {
+          mainNav.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+        }
       });
 
       document.querySelector("[data-close]").addEventListener("click", closeModal);

@@ -80,6 +80,24 @@ a { color: inherit; text-decoration: none; }
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 8px;
+  align-items: center;
+}
+
+.menu-toggle {
+  display: none;
+  min-height: 34px;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-lighter);
+  color: var(--ink);
+  padding: 6px 11px;
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.44);
+}
+
+.nav-links {
+  display: contents;
 }
 
 .nav button,
@@ -98,6 +116,7 @@ a { color: inherit; text-decoration: none; }
 
 .nav button:hover,
 .nav a:hover,
+.menu-toggle:hover,
 .tile:hover,
 .close:hover {
   transform: translate(-2px, -2px);
@@ -126,7 +145,7 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 18px;
   padding: 0 12px;
   border-bottom: 2px solid var(--line);
   background: var(--bar);
@@ -138,7 +157,7 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 13px;
+  font-size: 22px;
   font-weight: 800;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -204,12 +223,6 @@ h1 {
   color: #77d6ff;
   text-decoration: underline;
   text-underline-offset: 3px;
-}
-
-#topGameLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
 }
 
 .section {
@@ -303,12 +316,6 @@ h1 {
 
 .game-banner.banner-top {
   background-position: top center;
-}
-
-.game-banner-inner {
-  padding: 70px clamp(18px, 4vw, 36px) 26px;
-  color: white;
-  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.84));
 }
 
 h2 {
@@ -572,8 +579,9 @@ h2 {
 
 @media (max-width: 640px) {
   .topbar-inner {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
     padding: 10px 0;
   }
 
@@ -583,7 +591,27 @@ h2 {
   }
 
   .nav {
+    display: none;
+    width: 100%;
     justify-content: flex-start;
+    padding-top: 8px;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a,
+  .nav button {
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
   }
 
   .game-banner {
