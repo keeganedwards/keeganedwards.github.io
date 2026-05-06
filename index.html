@@ -101,7 +101,7 @@
                 ${game.projects.map((project) => `
                   <button class="tile ${project.thumbnailPosition === "top" ? "tile-top-image" : ""}" type="button" data-project="${escapeHtml(project.id)}">
                     <div class="tile-media">
-                      <img src="${escapeHtml(project.images[0].src)}" alt="${escapeHtml(project.title)}">
+                      <img src="${escapeHtml(project.thumbnail || project.images[0].src)}" alt="${escapeHtml(project.title)}">
                     </div>
                     <div class="tile-body">
                       <h3>${escapeHtml(project.title)}</h3>

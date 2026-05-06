@@ -101,7 +101,7 @@ export default function App() {
                       onClick={() => setModal({ type: "project", game, project })}
                     >
                       <div className="tile-media">
-                        <img src={project.images[0].src} alt={project.title} />
+                        <img src={project.thumbnail || project.images[0].src} alt={project.title} />
                       </div>
                       <div className="tile-body">
                         <h3>{project.title}</h3>

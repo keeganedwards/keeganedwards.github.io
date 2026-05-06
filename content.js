@@ -40,6 +40,7 @@ window.PORTFOLIO_DATA = {
         {
           id: "multiversus-battle-pass-fighter-road",
           title: "Battle Pass and Fighter Road",
+          thumbnail: "Images/1Multiversus/Override/BattlePass.png",
           text: `UI presentation, transitions, and reward flow work for Battle Pass and Fighter Road.`,
           images: [
             { src: "Images/1Multiversus/2BattlePassAndFighterRoad/BattlePass.gif", title: "Battle Pass", text: "" },
@@ -51,6 +52,7 @@ window.PORTFOLIO_DATA = {
         {
           id: "multiversus-store",
           title: "Menus",
+          thumbnail: "Images/1Multiversus/Override/Start.png",
           text: `
 Storefront presentation work including Asset Previews, Hover states, Icons, character presentation, reward transitions, and effects.
 - Built store presentation transition and asset management system.
@@ -68,7 +70,8 @@ Storefront presentation work including Asset Previews, Hover states, Icons, char
         },
         {
           id: "multiversus-end-of-game",
-          title: "End Of Game",
+          title: "Game Start and End Screen",
+          thumbnail: "Images/1Multiversus/Override/MatchStart.png",
           text: `End-of-game presentation, layout, tools, and match transition work.`,
           images: [
             { src: "Images/1Multiversus/4EndOfGame/EndOfGame.gif", title: "End Of Game", text: "" },
@@ -82,9 +85,9 @@ Storefront presentation work including Asset Previews, Hover states, Icons, char
           title: "Icon Creator",
           text: `Icon and thumbnail tooling work for presentation-ready character and inventory assets.`,
           images: [
+            { src: "Images/1Multiversus/5IconCreator/IconAdjustmentTool.png", title: "Icon Adjustment Tool", text: "" },
             { src: "Images/1Multiversus/5IconCreator/ThumbnailTool.gif", title: "Thumbnail Tool", text: "" },
             { src: "Images/1Multiversus/5IconCreator/IconCreator.gif", title: "Icon Creator", text: "" },
-            { src: "Images/1Multiversus/5IconCreator/IconAdjustmentTool.png", title: "Icon Adjustment Tool", text: "" }
           ]
         }
       ]
