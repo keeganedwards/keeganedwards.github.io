@@ -7,7 +7,8 @@ window.PORTFOLIO_DATA = {
     resume: "https://media.licdn.com/dms/image/v2/D562DAQESXdsCxMWtnQ/profile-treasury-document-images_1280/B56ZVnUfPfGsAU-/1/1741195180682?e=1778716800&v=beta&t=D638ywrxIweerKjrIsqBV2RGnJujKU8NjDu6Hzi0f4I"
   },
   intro: {
-    title: "Keegan Edwards, Senior Technical Artist",
+    name: "KEEGAN EDWARDS",
+    title: "SENIOR TECHNICAL ARTIST",
     text: `Senior AAA Developer with a demonstrated history of working in the games industry. Strong arts and design professional skilled in Pipeline Creation for Unreal and Maya Deep knowledge of the entire art pipeline including Marvelous, ZBrush, Substance with regards to Art for games. Comfortable in a broad assortment of different artistic aesthetics ranging from Realism to Stylized art.`
   },
   infoWindows: {
@@ -49,7 +50,7 @@ window.PORTFOLIO_DATA = {
         },
         {
           id: "multiversus-store",
-          title: "Store",
+          title: "Menus",
           text: `
 Storefront presentation work including Asset Previews, Hover states, Icons, character presentation, reward transitions, and effects.
 - Built store presentation transition and asset management system.

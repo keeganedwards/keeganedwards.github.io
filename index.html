@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Keegan Edwards | Technical Artist</title>
-    <meta name="description" content="Portfolio for Keegan Edwards, Technical Artist.">
+    <title>Keegan Edwards | Senior Technical Artist</title>
+    <meta name="description" content=" Keegan Edwards, Senior Technical Artist Portfolio.">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
     <script src="content.js"></script>
@@ -30,7 +30,9 @@
       <section class="hero wrap" aria-labelledby="introTitle">
         <div class="window">
           <div class="hero-content">
-            <h1 id="introTitle">Technical art, characters, tools, and shipped game work.</h1>
+            <h1 id="introTitle">
+              <span id="introName"></span><span class="intro-separator">, </span><span class="intro-role" id="introRole"></span>
+            </h1>
             <div class="hero-copy rich-text" id="introText"></div>
           </div>
         </div>
@@ -77,7 +79,8 @@
         document.title = `${DATA.brand.name} | ${DATA.brand.title}`;
         document.getElementById("brandName").textContent = DATA.brand.name;
         document.getElementById("brandTitle").textContent = DATA.brand.title;
-        document.getElementById("introTitle").textContent = DATA.intro.title;
+        document.getElementById("introName").textContent = DATA.intro.name || DATA.brand.name.toUpperCase();
+        document.getElementById("introRole").textContent = DATA.intro.title || DATA.brand.title.toUpperCase();
         document.getElementById("introText").innerHTML = renderMarkdown(DATA.intro.text);
         document.getElementById("copyright").textContent =
           "(c) " + new Date().getFullYear() + " " + DATA.brand.name;

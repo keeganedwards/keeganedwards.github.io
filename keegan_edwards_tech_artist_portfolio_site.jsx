@@ -70,7 +70,11 @@ export default function App() {
         <section className="hero wrap" aria-labelledby="intro-title">
           <div className="window">
             <div className="hero-content">
-              <h1 id="intro-title">{data.intro.title}</h1>
+              <h1 id="intro-title">
+                <span>{data.intro.name || data.brand.name.toUpperCase()}</span>
+                <span className="intro-separator">, </span>
+                <span className="intro-role">{data.intro.title || data.brand.title.toUpperCase()}</span>
+              </h1>
               <div
                 className="hero-copy rich-text"
                 dangerouslySetInnerHTML={{ __html: renderMarkdown(data.intro.text) }}
