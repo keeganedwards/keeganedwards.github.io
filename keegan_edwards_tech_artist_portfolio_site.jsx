@@ -246,7 +246,7 @@ function ProjectGallery({ data, project, initialImageIndex, onProjectChange }) {
           >
             <span className="viewer-arrow-symbol">{"<"}</span>
             <span className="viewer-arrow-label" aria-hidden="true">
-              <span>Up next</span>
+              <span>Go back to</span>
               <strong>{previousProject?.project.title}</strong>
             </span>
           </button>
