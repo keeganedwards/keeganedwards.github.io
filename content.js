@@ -100,10 +100,19 @@ Storefront presentation work including Asset Previews, Hover states, Icons, char
       projects: [
         {
           id: "tlou-part-1-character-asset-browser",
-          title: "Character Asset Browser",
-          text: `Character asset browsing and production support work.`,
+          title: "Character Art Pipeline",
+          text: `Problem Statement:	With an initial small team of character artists we were trying to punch above our size and working on a remaster with a smaller team trying to make a remaster of a game while pushing the quality to current gen with unique characters more characters on screen higher fidelity with less people and resources. We would need to reduce the amount of rework while allowing for the most reuse staying organized and collaborative to utilize each artists work and time to the fullest. When we began production it became clear there were improvements that could be made within the character art pipeline. We had just finished up work on The Last of Us Part 2 and found many problems that needed to be addressed.
+-	Art assets were hard to find or disorganized often required interfacing with artists to find assets so they could be reused. Even when assets were organized knowing the status and what the asset looked like meant time browsing through files task tracking software. This has a compounding effect people were not reusing each others assets and creating rework.
+-	Building an asset often took multiple disciplines art to make the asset rigging to skin it and tech art to make the game data to see the results. This meant for long iteration and developers making efforts not at the core of their discipline. Artists want to make art! 
+-	Avoid Crunch! We wanted to be able to track the trajectory of the assets and their completion. This would allow us to plan accordingly and make it easy for artist to update the status of an asset.
+-	Updates on the batches of the cast was something that happened a repeatedly at the end of development. UV's needing updates, Issues with Actor Settings and of course reskinning due to model changes.
+-	Large amounts of time was spent on bugs for crashing between two assets within the character. Not all assets would fit together properly, the underlying geometry would not be removed causing interpenetration issues when the character would animate. 
+There were also issues we would have that were unique to the project.
+-	Due to the multiple teams working on the project. There were multiple version control software's and repositories. It made working with these systems difficult to keep everything organized.
+-	We would eventually need to move databases and file locations for huge segments of the project. 
+-	Moving to work from home we had issues with long latency times when using version control making some large file updates take a long time.`,
           images: [
-            { src: "Images/2TheLastOfUsPart1/3CharacterAssetBrowser/ivan-miya-t1x-imiya-faction-hunter-z-game.jpg", title: "Character Asset Browser", text: "" }
+            { src: "Images/2TheLastOfUsPart1/3CharacterAssetBrowser/CabbDemonstration.png", title: "Character Asset Browser", text: "" }
           ]
         },
         {
@@ -111,7 +120,7 @@ Storefront presentation work including Asset Previews, Hover states, Icons, char
           title: "Character Asset Browser",
           text: `Character asset browsing and production support work.`,
           images: [
-            { src: "Images/2TheLastOfUsPart1/3CharacterAssetBrowser/ivan-miya-t1x-imiya-faction-hunter-z-game.jpg", title: "Character Asset Browser", text: "" }
+            { src: "Images/2TheLastOfUsPart1/3CharacterAssetBrowser/CabbDemonstration.png", title: "Character Asset Browser", text: "" }
           ]
         }
       ]
@@ -213,7 +222,7 @@ Storefront presentation work including Asset Previews, Hover states, Icons, char
           text: `I had the Oportunity to work on splash art for the United Front DLC I posed and contributed to lighting the characters.`,
           images: [
             { src: "Images/5CallOfDuty/1Splash/XLWglaOdZUL8Dor76Hy1BQt8AuHB3UUb.jpg", title: "Splash Art", text: "" },
-            { src: "Images/5CallOfDuty/1Splash/d20180430-007_DLC_3_Key_Art_1920x762_01.jpg", title: "DLC Key Art", text: "" },
+
           ]
         },
         {
