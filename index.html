@@ -99,7 +99,13 @@
               </div>
               <div class="tile-grid">
                 ${game.projects.map((project) => `
-                  <button class="tile ${project.thumbnailPosition === "top" ? "tile-top-image" : ""}" type="button" data-project="${escapeHtml(project.id)}">
+                  <button
+                    class="tile ${project.thumbnailPosition === "top" ? "tile-top-image" : ""}"
+                    type="button"
+                    data-project="${escapeHtml(project.id)}"
+                    data-thumb-src="${escapeHtml(project.thumbnail || project.images[0].src)}"
+                    data-hover-src="${escapeHtml(project.images[0].src)}"
+                  >
                     <div class="tile-media">
                       <img src="${escapeHtml(project.thumbnail || project.images[0].src)}" alt="${escapeHtml(project.title)}">
                     </div>
@@ -115,7 +121,20 @@
 
         document.querySelectorAll("[data-project]").forEach((button) => {
           button.addEventListener("click", () => openProject(button.dataset.project));
+          button.addEventListener("mouseenter", () => swapTileImage(button, "hover"));
+          button.addEventListener("mouseleave", () => swapTileImage(button, "thumb"));
+          button.addEventListener("focus", () => swapTileImage(button, "hover"));
+          button.addEventListener("blur", () => swapTileImage(button, "thumb"));
         });
+      }
+
+      function swapTileImage(tile, mode) {
+        const img = tile.querySelector(".tile-media img");
+        if (!img) return;
+        const nextSrc = mode === "hover" ? tile.dataset.hoverSrc : tile.dataset.thumbSrc;
+        if (nextSrc && img.getAttribute("src") !== nextSrc) {
+          img.src = nextSrc;
+        }
       }
 
       function findProject(id) {

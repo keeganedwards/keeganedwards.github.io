@@ -74,18 +74,18 @@ Storefront presentation work including Asset Previews, Hover states, Icons, char
           thumbnail: "Images/1Multiversus/Override/MatchStart.png",
           text: `End-of-game presentation, layout, tools, and match transition work.`,
           images: [
+            { src: "Images/1Multiversus/4EndOfGame/MatchStart.gif", title: "Match Start", text: "" },
             { src: "Images/1Multiversus/4EndOfGame/EndOfGame.gif", title: "End Of Game", text: "" },
             { src: "Images/1Multiversus/4EndOfGame/EOGTools.gif", title: "End Of Game Tools", text: "" },
             { src: "Images/1Multiversus/4EndOfGame/Layouts.gif", title: "Layouts", text: "" },
-            { src: "Images/1Multiversus/4EndOfGame/MatchStart.gif", title: "Match Start", text: "" }
           ]
         },
         {
           id: "multiversus-icon-creator",
           title: "Icon Creator",
+          thumbnail: "Images/1Multiversus/5IconCreator/IconAdjustmentTool.png",
           text: `Icon and thumbnail tooling work for presentation-ready character and inventory assets.`,
           images: [
-            { src: "Images/1Multiversus/5IconCreator/IconAdjustmentTool.png", title: "Icon Adjustment Tool", text: "" },
             { src: "Images/1Multiversus/5IconCreator/ThumbnailTool.gif", title: "Thumbnail Tool", text: "" },
             { src: "Images/1Multiversus/5IconCreator/IconCreator.gif", title: "Icon Creator", text: "" },
           ]
@@ -99,7 +99,7 @@ Storefront presentation work including Asset Previews, Hover states, Icons, char
       bannerPosition: "top",
       projects: [
         {
-          id: "tlou-part-1-character-asset-browser",
+          id: "tlou-part-1-character-pipeline",
           title: "Character Art Pipeline",
           text: `Problem Statement:	With an initial small team of character artists we were trying to punch above our size and working on a remaster with a smaller team trying to make a remaster of a game while pushing the quality to current gen with unique characters more characters on screen higher fidelity with less people and resources. We would need to reduce the amount of rework while allowing for the most reuse staying organized and collaborative to utilize each artists work and time to the fullest. When we began production it became clear there were improvements that could be made within the character art pipeline. We had just finished up work on The Last of Us Part 2 and found many problems that needed to be addressed.
 -	Art assets were hard to find or disorganized often required interfacing with artists to find assets so they could be reused. Even when assets were organized knowing the status and what the asset looked like meant time browsing through files task tracking software. This has a compounding effect people were not reusing each others assets and creating rework.

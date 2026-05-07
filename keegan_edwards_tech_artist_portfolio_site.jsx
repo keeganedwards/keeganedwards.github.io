@@ -99,6 +99,18 @@ export default function App() {
                       type="button"
                       key={project.id}
                       onClick={() => setModal({ type: "project", game, project })}
+                      onMouseEnter={(event) => {
+                        event.currentTarget.querySelector("img").src = project.images[0].src;
+                      }}
+                      onMouseLeave={(event) => {
+                        event.currentTarget.querySelector("img").src = project.thumbnail || project.images[0].src;
+                      }}
+                      onFocus={(event) => {
+                        event.currentTarget.querySelector("img").src = project.images[0].src;
+                      }}
+                      onBlur={(event) => {
+                        event.currentTarget.querySelector("img").src = project.thumbnail || project.images[0].src;
+                      }}
                     >
                       <div className="tile-media">
                         <img src={project.thumbnail || project.images[0].src} alt={project.title} />
