@@ -484,10 +484,58 @@ h2 {
   font-size: 58px;
   line-height: 1;
   transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 160ms ease, background 160ms ease;
 }
 
 .viewer-arrow:hover {
   background: rgba(238, 241, 239, 0.28);
+}
+
+.viewer-arrow-symbol {
+  line-height: 1;
+}
+
+.viewer-arrow-label {
+  display: none;
+  min-width: 0;
+  text-align: left;
+  line-height: 1.1;
+}
+
+.viewer-arrow-label span,
+.viewer-arrow-label strong {
+  display: block;
+}
+
+.viewer-arrow-label span {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.viewer-arrow-label strong {
+  max-width: 148px;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 15px;
+  text-overflow: ellipsis;
+}
+
+.viewer-arrow-tile-jump:hover,
+.viewer-arrow-tile-jump:focus-visible {
+  width: 220px;
+  background: rgba(238, 241, 239, 0.32);
+}
+
+.viewer-arrow-tile-jump:hover .viewer-arrow-label,
+.viewer-arrow-tile-jump:focus-visible .viewer-arrow-label {
+  display: block;
 }
 
 .viewer-arrow-left {
@@ -496,6 +544,10 @@ h2 {
 
 .viewer-arrow-right {
   right: 0;
+}
+
+.viewer-arrow-left .viewer-arrow-label {
+  text-align: right;
 }
 
 .thumb-strip {

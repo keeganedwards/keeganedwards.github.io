@@ -219,6 +219,7 @@ There were also issues we would have that were unique to the project.
         {
           id: "cod-splash",
           title: "United Front",
+          thumbnailPosition: "top",
           text: `I had the Oportunity to work on splash art for the United Front DLC I posed and contributed to lighting the characters.`,
           images: [
             { src: "Images/5CallOfDuty/1Splash/XLWglaOdZUL8Dor76Hy1BQt8AuHB3UUb.jpg", title: "Splash Art", text: "" },
@@ -246,6 +247,7 @@ There were also issues we would have that were unique to the project.
           id: "cod-sculpts",
           title: "Character Sculpts",
           text: `Character sculpt presentation work.`,
+          thumbnailPosition: "top",
           images: [
             { src: "Images/5CallOfDuty/2Sculpts/aus_infantry.png", title: "Australian Infantry", text: "" },
             { src: "Images/5CallOfDuty/2Sculpts/eng_summer.png", title: "English Summer", text: "" },

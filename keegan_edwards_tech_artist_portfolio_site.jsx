@@ -129,12 +129,12 @@ export default function App() {
 
       <footer className="footer wrap">(c) {new Date().getFullYear()} {data.brand.name}</footer>
 
-      {modal ? <Modal data={data} modal={modal} onClose={() => setModal(null)} /> : null}
+      {modal ? <Modal data={data} modal={modal} setModal={setModal} onClose={() => setModal(null)} /> : null}
     </div>
   );
 }
 
-function Modal({ data, modal, onClose }) {
+function Modal({ data, modal, setModal, onClose }) {
   const title =
     modal.type === "project"
       ? `${modal.game.title} / ${modal.project.title}`
@@ -151,7 +151,17 @@ function Modal({ data, modal, onClose }) {
       >
         <WindowBar title={title} onClose={onClose} />
         <div className="modal-content">
-          {modal.type === "project" ? <ProjectGallery project={modal.project} /> : null}
+          {modal.type === "project" ? (
+            <ProjectGallery
+              key={`${modal.project.id}-${modal.initialImageIndex || 0}`}
+              data={data}
+              project={modal.project}
+              initialImageIndex={modal.initialImageIndex || 0}
+              onProjectChange={(game, project, initialImageIndex) => {
+                setModal({ type: "project", game, project, initialImageIndex });
+              }}
+            />
+          ) : null}
           {modal.type === "about" ? <AboutInfo data={data} /> : null}
         </div>
       </section>
@@ -186,11 +196,37 @@ function AboutInfo({ data }) {
   );
 }
 
-function ProjectGallery({ project }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+function ProjectGallery({ data, project, initialImageIndex, onProjectChange }) {
+  const safeInitialIndex = Math.max(0, Math.min(initialImageIndex, project.images.length - 1));
+  const [activeIndex, setActiveIndex] = useState(safeInitialIndex);
   const activeImage = project.images[activeIndex];
+  const projectSequence = data.games.flatMap((game) =>
+    game.projects.map((gameProject) => ({ game, project: gameProject }))
+  );
+  const currentProjectIndex = projectSequence.findIndex((item) => item.project.id === project.id);
+  const previousProject = projectSequence[currentProjectIndex - 1];
+  const nextProject = projectSequence[currentProjectIndex + 1];
+  const showPreviousArrow = activeIndex > 0 || previousProject;
+  const showNextArrow = activeIndex < project.images.length - 1 || nextProject;
+  const previousTileJump = activeIndex === 0 && previousProject;
+  const nextTileJump = activeIndex === project.images.length - 1 && nextProject;
+
   const showImage = (nextIndex) => {
-    setActiveIndex((nextIndex + project.images.length) % project.images.length);
+    if (nextIndex < 0) {
+      if (previousProject) {
+        onProjectChange(previousProject.game, previousProject.project, previousProject.project.images.length - 1);
+      }
+      return;
+    }
+
+    if (nextIndex >= project.images.length) {
+      if (nextProject) {
+        onProjectChange(nextProject.game, nextProject.project, 0);
+      }
+      return;
+    }
+
+    setActiveIndex(nextIndex);
   };
 
   return (
@@ -201,22 +237,34 @@ function ProjectGallery({ project }) {
           src={activeImage.src}
           alt={activeImage.title || project.title}
         />
-        <button
-          className="viewer-arrow viewer-arrow-left"
-          type="button"
-          onClick={() => showImage(activeIndex - 1)}
-          aria-label="Previous image"
-        >
-          {"<"}
-        </button>
-        <button
-          className="viewer-arrow viewer-arrow-right"
-          type="button"
-          onClick={() => showImage(activeIndex + 1)}
-          aria-label="Next image"
-        >
-          {">"}
-        </button>
+        {showPreviousArrow ? (
+          <button
+            className={`viewer-arrow viewer-arrow-left ${previousTileJump ? "viewer-arrow-tile-jump" : ""}`}
+            type="button"
+            onClick={() => showImage(activeIndex - 1)}
+            aria-label={previousTileJump ? `Previous project: ${previousProject.project.title}` : "Previous image"}
+          >
+            <span className="viewer-arrow-symbol">{"<"}</span>
+            <span className="viewer-arrow-label" aria-hidden="true">
+              <span>Up next</span>
+              <strong>{previousProject?.project.title}</strong>
+            </span>
+          </button>
+        ) : null}
+        {showNextArrow ? (
+          <button
+            className={`viewer-arrow viewer-arrow-right ${nextTileJump ? "viewer-arrow-tile-jump" : ""}`}
+            type="button"
+            onClick={() => showImage(activeIndex + 1)}
+            aria-label={nextTileJump ? `Next project: ${nextProject.project.title}` : "Next image"}
+          >
+            <span className="viewer-arrow-label" aria-hidden="true">
+              <span>Up next</span>
+              <strong>{nextProject?.project.title}</strong>
+            </span>
+            <span className="viewer-arrow-symbol">{">"}</span>
+          </button>
+        ) : null}
       </div>
       <div className="thumb-strip" aria-label="Project images">
         {project.images.map((image, index) => (

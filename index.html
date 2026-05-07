@@ -145,6 +145,12 @@
         return null;
       }
 
+      function getProjectSequence() {
+        return DATA.games.flatMap((game) =>
+          game.projects.map((project) => ({ game, project }))
+        );
+      }
+
       function openModal(title, content, wide = false) {
         modalTitle.textContent = title;
         modalContent.innerHTML = content;
@@ -160,11 +166,12 @@
         document.body.style.overflow = "";
       }
 
-      function openProject(id) {
+      function openProject(id, initialImageIndex = 0) {
         const found = findProject(id);
         if (!found) return;
         const { game, project } = found;
-        const firstImage = project.images[0];
+        const safeInitialIndex = Math.max(0, Math.min(initialImageIndex, project.images.length - 1));
+        const firstImage = project.images[safeInitialIndex];
 
         openModal(
           `${game.title} / ${project.title}`,
@@ -178,16 +185,24 @@
                   alt="${escapeHtml(firstImage.title || project.title)}"
                 >
                 <button class="viewer-arrow viewer-arrow-left" type="button" data-carousel-prev aria-label="Previous image">
-                  &lt;
+                  <span class="viewer-arrow-symbol">&lt;</span>
+                  <span class="viewer-arrow-label" aria-hidden="true">
+                    <span>Up next</span>
+                    <strong data-carousel-prev-title></strong>
+                  </span>
                 </button>
                 <button class="viewer-arrow viewer-arrow-right" type="button" data-carousel-next aria-label="Next image">
-                  &gt;
+                  <span class="viewer-arrow-label" aria-hidden="true">
+                    <span>Up next</span>
+                    <strong data-carousel-next-title></strong>
+                  </span>
+                  <span class="viewer-arrow-symbol">&gt;</span>
                 </button>
               </div>
               <div class="thumb-strip" aria-label="Project images">
                 ${project.images.map((image, index) => `
                   <button
-                    class="thumb-button ${index === 0 ? "active" : ""}"
+                    class="thumb-button ${index === safeInitialIndex ? "active" : ""}"
                     type="button"
                     data-carousel-thumb="${index}"
                     aria-label="Show ${escapeHtml(image.title || project.title)}"
@@ -206,31 +221,73 @@
           `,
           true
         );
-        attachCarousel(project);
+        attachCarousel(project, safeInitialIndex);
       }
 
-      function attachCarousel(project) {
+      function attachCarousel(project, initialImageIndex = 0) {
         const viewer = modalContent.querySelector("[data-carousel]");
         if (!viewer) return;
 
         const image = viewer.querySelector("[data-viewer-image]");
+        const previousButton = viewer.querySelector("[data-carousel-prev]");
+        const nextButton = viewer.querySelector("[data-carousel-next]");
+        const previousTitle = viewer.querySelector("[data-carousel-prev-title]");
+        const nextTitle = viewer.querySelector("[data-carousel-next-title]");
         const thumbs = Array.from(viewer.querySelectorAll("[data-carousel-thumb]"));
-        let activeIndex = 0;
+        const projectSequence = getProjectSequence();
+        const currentProjectIndex = projectSequence.findIndex((item) => item.project.id === project.id);
+        const previousProject = projectSequence[currentProjectIndex - 1];
+        const nextProject = projectSequence[currentProjectIndex + 1];
+        let activeIndex = initialImageIndex;
+
+        function updateArrowVisibility() {
+          const previousTileJump = activeIndex === 0 && previousProject;
+          const nextTileJump = activeIndex === project.images.length - 1 && nextProject;
+
+          previousButton.hidden = activeIndex === 0 && !previousProject;
+          nextButton.hidden = activeIndex === project.images.length - 1 && !nextProject;
+          previousButton.classList.toggle("viewer-arrow-tile-jump", Boolean(previousTileJump));
+          nextButton.classList.toggle("viewer-arrow-tile-jump", Boolean(nextTileJump));
+
+          if (previousProject) {
+            previousTitle.textContent = previousProject.project.title;
+            previousButton.setAttribute("aria-label", previousTileJump ? `Previous project: ${previousProject.project.title}` : "Previous image");
+          }
+          if (nextProject) {
+            nextTitle.textContent = nextProject.project.title;
+            nextButton.setAttribute("aria-label", nextTileJump ? `Next project: ${nextProject.project.title}` : "Next image");
+          }
+        }
 
         function showImage(nextIndex) {
-          activeIndex = (nextIndex + project.images.length) % project.images.length;
+          if (nextIndex < 0) {
+            if (previousProject) {
+              openProject(previousProject.project.id, previousProject.project.images.length - 1);
+            }
+            return;
+          }
+
+          if (nextIndex >= project.images.length) {
+            if (nextProject) {
+              openProject(nextProject.project.id, 0);
+            }
+            return;
+          }
+
+          activeIndex = nextIndex;
           const nextImage = project.images[activeIndex];
           image.src = nextImage.src;
           image.alt = nextImage.title || project.title;
           thumbs.forEach((thumb, index) => {
             thumb.classList.toggle("active", index === activeIndex);
           });
+          updateArrowVisibility();
         }
 
-        viewer.querySelector("[data-carousel-prev]").addEventListener("click", () => {
+        previousButton.addEventListener("click", () => {
           showImage(activeIndex - 1);
         });
-        viewer.querySelector("[data-carousel-next]").addEventListener("click", () => {
+        nextButton.addEventListener("click", () => {
           showImage(activeIndex + 1);
         });
         thumbs.forEach((thumb) => {
@@ -238,6 +295,7 @@
             showImage(Number(thumb.dataset.carouselThumb));
           });
         });
+        updateArrowVisibility();
       }
 
       function openInfo(type) {
