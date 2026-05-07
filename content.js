@@ -9,7 +9,7 @@ window.PORTFOLIO_DATA = {
   intro: {
     name: "KEEGAN EDWARDS",
     title: "SENIOR TECHNICAL ARTIST",
-    text: `Senior AAA Developer with a demonstrated history of working in the games industry. Strong arts and design professional skilled in Pipeline Creation for Unreal and Maya Deep knowledge of the entire art pipeline including Marvelous, ZBrush, Substance with regards to Art for games. Comfortable in a broad assortment of different artistic aesthetics ranging from Realism to Stylized art.`
+    text: ``
   },
   infoWindows: {
     portfolio: {
@@ -19,7 +19,7 @@ window.PORTFOLIO_DATA = {
     about: {
     title: "Keegan Edwards",
     profileImage: "https://github.com/keeganedwards.png",
-    text: `Senior Technical Artist with shipped work across character art, UI presentation, tools, optimization, and production pipelines.
+    text: `AAA developer with a demonstrated history of working in the games industry. Strong arts and design professional skilled in pipeline creation for Unreal and Maya Deep knowledge of the entire art pipeline. Comfortable in a broad assortment of different artistic aesthetics ranging from realism to stylized art.
     `
   }
   },
