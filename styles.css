@@ -399,6 +399,8 @@ h2 {
 .modal-window {
   width: min(100%, 1060px);
   max-height: min(86vh, 920px);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: 2px solid var(--line);
   border-radius: var(--radius);
@@ -416,7 +418,8 @@ h2 {
 }
 
 .modal-content {
-  max-height: calc(min(86vh, 920px) - 34px);
+  flex: 1 1 auto;
+  min-height: 0;
   overflow: auto;
   padding: 18px;
   background: var(--panel);
@@ -583,6 +586,7 @@ h2 {
 .project-detail {
   display: grid;
   gap: 14px;
+  min-height: 0;
 }
 
 .project-detail h3 {
@@ -593,6 +597,10 @@ h2 {
 
 .description-panel {
   padding: clamp(16px, 3vw, 28px);
+  max-height: min(34vh, 380px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
 }
 
 .description-panel .rich-text {
@@ -601,6 +609,20 @@ h2 {
   color: var(--ink);
   font-size: 17px;
   line-height: 1.58;
+}
+
+.portfolio-disclaimer {
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-dark);
+  color: var(--muted);
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.portfolio-disclaimer strong {
+  color: var(--ink);
 }
 
 .footer {
@@ -699,7 +721,6 @@ h2 {
   }
 
   .modal-content {
-    max-height: calc(100vh - 54px);
     padding: 12px;
   }
 

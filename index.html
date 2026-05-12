@@ -75,6 +75,11 @@
         return window.marked ? window.marked.parse(String(value || "")) : escapeHtml(value);
       }
 
+      function getPortfolioDisclaimer(owner) {
+        const safeOwner = escapeHtml(owner || "the respective company, studio, client, or IP owner");
+        return `Portfolio disclaimer: All IP, artwork, screenshots, and final assets belong to ${safeOwner}. Shown here for portfolio purposes only to describe my individual contributions.`;
+      }
+
       function renderSite() {
         document.title = `${DATA.brand.name} | ${DATA.brand.title}`;
         document.getElementById("brandName").textContent = DATA.brand.name;
@@ -154,6 +159,7 @@
       function openModal(title, content, wide = false) {
         modalTitle.textContent = title;
         modalContent.innerHTML = content;
+        modalContent.scrollTop = 0;
         modalWindow.classList.toggle("wide", wide);
         modal.classList.add("open");
         modal.setAttribute("aria-hidden", "false");
@@ -215,6 +221,9 @@
                 <h3>${escapeHtml(project.title)}</h3>
                 <div class="description-panel">
                   <div class="rich-text">${renderMarkdown(project.text)}</div>
+                </div>
+                <div class="portfolio-disclaimer">
+                  ${getPortfolioDisclaimer(project.disclaimerOwner || game.disclaimerOwner)}
                 </div>
               </section>
             </div>

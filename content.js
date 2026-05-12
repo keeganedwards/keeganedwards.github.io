@@ -27,12 +27,13 @@ window.PORTFOLIO_DATA = {
     {
       id: "multiversus",
       title: "MultiVersus",
+      disclaimerOwner: "Warner Brothers",
       banner: "Images/1Multiversus/Banner.jpg",
       projects: [
         {
           id: "multiversus-lighting-material-overhaul",
           title: "Lighting and Material Overhaul",
-          text: `Visual and character lighting/material work for the MultiVersus presentation overhaul.`,
+          text: `Going from beta to release we wanted to change the characters materials to have a more dynamic and physical look. As well as rebuilding the lighting system that was there to work better with the entire cast of characters. I worked with the character team and Art direction to Update workflows and Materials to help achieve this visual overhaul. As well as building the lighting systems that allowed for various character lighting throughout the game.`,
           images: [
             { src: "Images/1Multiversus/1LightingAndMaterialOverhaul/MultiVersusVisualAndCharacterLightingOverhaul.gif", title: "Lighting and Material Overhaul", text: "" }
           ]
@@ -41,7 +42,7 @@ window.PORTFOLIO_DATA = {
           id: "multiversus-battle-pass-fighter-road",
           title: "Battle Pass and Fighter Road",
           thumbnail: "Images/1Multiversus/Override/BattlePass.png",
-          text: `UI presentation, transitions, and reward flow work for Battle Pass and Fighter Road.`,
+          text: `This initially started as a small strike team to get the golden path working for the menus I built the menu scene manager which managed menu, materials, scene and reward transitions. It also controlled how actors would async load into the scene while hovering or interacting with different elements of the UI.`,
           images: [
             { src: "Images/1Multiversus/2BattlePassAndFighterRoad/BattlePass.gif", title: "Battle Pass", text: "" },
             { src: "Images/1Multiversus/2BattlePassAndFighterRoad/BattlePassTransitions.gif", title: "Battle Pass Transitions", text: "" },
@@ -55,9 +56,12 @@ window.PORTFOLIO_DATA = {
           thumbnail: "Images/1Multiversus/Override/Start.png",
           text: `
 Storefront presentation work including Asset Previews, Hover states, Icons, character presentation, reward transitions, and effects.
+
 - Built store presentation transition and asset management system.
 - Supported Reward Displays.
-- Managed Icon resolution and Created tools for Reward/ Store Icons for Characters.`,
+- Managed Icon resolution and Created tools for Reward/ Store Icons for Characters.
+- Built materials for UI to have clean non aliased shapes they could build in editor.
+- Built tooling for maintaining reward texture data.`,
           images: [
             { src: "Images/1Multiversus/3Store/Start.gif", title: "Store Start", text: "" },
             { src: "Images/1Multiversus/3Store/Banners.gif", title: "Banners", text: "" },
@@ -72,7 +76,7 @@ Storefront presentation work including Asset Previews, Hover states, Icons, char
           id: "multiversus-end-of-game",
           title: "Game Start and End Screen",
           thumbnail: "Images/1Multiversus/Override/MatchStart.png",
-          text: `End-of-game presentation, layout, tools, and match transition work.`,
+          text: `I worked with animation to build them a system that allowed them to change placement delay the spawns. I  designed the system that would determine what game mode was being played which was attached to different character placement and victory/ end game arrangements. I also built out tooling to allow for animation to test this easily so they could iterate quickly and test their work in context. The tool allowed for controlling banners, characters, their skins and player nameplates.`,
           images: [
             { src: "Images/1Multiversus/4EndOfGame/MatchStart.gif", title: "Match Start", text: "" },
             { src: "Images/1Multiversus/4EndOfGame/EndOfGame.gif", title: "End Of Game", text: "" },
@@ -84,7 +88,9 @@ Storefront presentation work including Asset Previews, Hover states, Icons, char
           id: "multiversus-icon-creator",
           title: "Icon Creator",
           thumbnail: "Images/1Multiversus/5IconCreator/IconAdjustmentTool.png",
-          text: `Icon and thumbnail tooling work for presentation-ready character and inventory assets.`,
+          text: `We needed to generate a large pool of icons for the entire cast / every item / cosmetic in the game maintaining the most reuse and ability to iterate on asset placement while maintaining performance when displaying large asset pools. I built this tool which automatically would batch through framing the characters and would use that same frame if that animation was used on another skin and capture the character full body. This batched out the entire cast of characters and attached it their data assets so they could be used straight away in the store. Portraits would need to be cropped using the Cropping tools allowing quick real time changes that you could see in context. 
+The tool supported swapping of lighting environments and capturing characters in different poses that could be authored for that specific pose or image that would be used for splash/ store / promotional work. 
+`,
           images: [
             { src: "Images/1Multiversus/5IconCreator/ThumbnailTool.gif", title: "Thumbnail Tool", text: "" },
             { src: "Images/1Multiversus/5IconCreator/IconCreator.gif", title: "Icon Creator", text: "" },
@@ -95,6 +101,7 @@ Storefront presentation work including Asset Previews, Hover states, Icons, char
     {
       id: "the-last-of-us-part-1",
       title: "The Last of Us Part I",
+      disclaimerOwner: "Naughty Dog",
       banner: "Images/2TheLastOfUsPart1/Banner.jpg",
       bannerPosition: "top",
       projects: [
@@ -128,6 +135,7 @@ There were also issues we would have that were unique to the project.
     {
       id: "ashes-of-creation",
       title: "Ashes of Creation",
+      disclaimerOwner: "Intrepid Studios",
       bannerPosition: "top",
       banner: "Images/3AshesOfCreation/Banner.png",
       projects: [
@@ -164,6 +172,7 @@ There were also issues we would have that were unique to the project.
     {
       id: "the-last-of-us-part-2",
       title: "The Last of Us Part II",
+      disclaimerOwner: "Naughty Dog",
       banner: "Images/4TheLastOfUsPart2/Banner.jpg",
       bannerPosition: "top",
       projects: [
@@ -171,7 +180,7 @@ There were also issues we would have that were unique to the project.
           id: "tlou-part-2-ellie",
           title: "Ellie",
           thumbnailPosition: "top",
-          text: `Character Work I did for The Last of Us Part 2.`,
+          text: `I had the great fortune to work on Young Ellie from The Last of Us Part 2 with the wonderfully talented Naughty Dog Team! I worked on a portion of the model which was scanned by our awesome team at VSAG, I sweater model and textures for Ellie the rest was by the fantastic artists at Naughty Dog.`,
           images: [
             { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-mid-color.jpg", title: "Mid Color", text: "" },
             { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-full-clay.jpg", title: "Full Clay", text: "" },
@@ -187,7 +196,8 @@ There were also issues we would have that were unique to the project.
         {
           id: "tlou-part-2-prisoners",
           title: "Prisoners",
-          text: `Prisoner character presentation work shown as an ordered gallery.`,
+          text: `I had the privilege to work with Naughty Dog on The Last of Us Part 2. This scene was a huge team effort, I worked on the assembly, modeling, hair, rigging/skinning, posing, texturing of the characters in the scene Colleen Larson and Darcy Korch were a tremendous help and took over on the last three characters at the end of production. It was awesome to work with them on this fantastic project. The pillars were worked on by the awesome environment team at VASG and the environment was handled by the talented team at Naughty dog!
+I built out a bruising sunburn blood and human ecroshe for the prisoner scenes. These allowed for Procedural painting of all of these elements on the character. The ecroshe allowed the artist to paint through each layer of the human anatomy to add to the depth for the gore. Blood could dynamically be painted to pool up or be dried out depending on opacity of the brush in painter. Bruising also had 3 variations and each covered different levels of damage. These were all made within designer and painter and used within substance painter.`,
           images: [
             { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0000-layer-comp-1.jpg", title: "Prisoners 01", text: "" },
             { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0001-layer-comp-2.jpg", title: "Prisoners 02", text: "" },
@@ -203,7 +213,7 @@ There were also issues we would have that were unique to the project.
         {
           id: "tlou-part-2-prisoners-escape",
           title: "Prisoners Escape",
-          text: `Prisoners escape presentation work with captured and masked views.`,
+          text: `I had the great fortune of working on The Last of Us Part 2. The base Models were provided by Naughty Dog and It was my job to assemble the look and weather the characters. I did not work on the environment Ellie or Ian in this scene that work was done by the Artists at Naughty Dog.`,
           images: [
             { src: "Images/4TheLastOfUsPart2/3Prisoners Escape/keegan-edwards-prisonerscaptured-masked.jpg", title: "Captured Masked", text: "" },
             { src: "Images/4TheLastOfUsPart2/3Prisoners Escape/keegan-edwards-prisonerscaptured.jpg", title: "Captured", text: "" }
@@ -214,6 +224,7 @@ There were also issues we would have that were unique to the project.
     {
       id: "call-of-duty",
       title: "Call of Duty: WW2",
+      disclaimerOwner: "Activision",
       banner: "Images/5CallOfDuty/Banner.jpg",
       projects: [
         {
@@ -230,7 +241,7 @@ There were also issues we would have that were unique to the project.
           id: "cod-ingame",
           title: "In Game Characters",
           thumbnailPosition: "top",
-          text: `In-game character presentation work.`,
+          text: `This is a small selection of characters I worked on for Call of Duty WW2 I built materials that were used by the character art team for various reward types as well as grunge smart materials that layered on top of the characters for different reward levels. I built out a process for out camouflage sets that utilized secondary uv sets to speed up the process while keeping the memory footprint low for the textile density required for each character. I modeled textured and did first pass skinning on the characters as well.`,
           images: [
             { src: "Images/5CallOfDuty/3Ingame/EnglishComando.png", title: "English Commando", text: "" },
             { src: "Images/5CallOfDuty/3Ingame/EnglishDesert.png", title: "English Desert", text: "" },
@@ -246,7 +257,7 @@ There were also issues we would have that were unique to the project.
         {
           id: "cod-sculpts",
           title: "Character Sculpts",
-          text: `Character sculpt presentation work.`,
+          text: `Some character art sculpts I worked on for Call of Duty WW2 I used marvelous designer and built my own patterns with morph targets to create accurate compression for the fabric reacting to the characters kit. I also sculpted, retopologised, uved, baked, textured, skinned, and got them into game. `,
           thumbnailPosition: "top",
           images: [
             { src: "Images/5CallOfDuty/2Sculpts/aus_infantry.png", title: "Australian Infantry", text: "" },
