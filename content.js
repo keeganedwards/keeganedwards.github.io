@@ -154,30 +154,31 @@ There were also project-specific challenges:
       projects: [
         {
           id: "ashes-harbingers",
-          title: "Harbingers",
+          title: "Harbingers PCG",
+          thumbnail: "Images/3AshesOfCreation/1Harbingers/Harbingers.png",
           text: `Harbinger presentation and supporting technical art work for in-game visual review and production support.`,
           images: [
-            { src: "Images/3AshesOfCreation/1Harbingers/Harbingers.png", title: "Harbingers", text: "" },
-            { src: "Images/3AshesOfCreation/1Harbingers/maxresdefault.jpg", title: "Harbingers Preview", text: "" },
-            { src: "Images/3AshesOfCreation/1Harbingers/Screenshot 2026-04-29 121732.png", title: "Harbingers Screenshot", text: "" }
+            { src: "Images/3AshesOfCreation/1Harbingers/AOC_Captures_Harbingers_01.gif", title: "Harbingers", text: "" },
           ]
         },
         {
           id: "ashes-hlods",
-          title: "HLODs",
+          title: "Landscape Oprimization",
+          thumbnail: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_3.png",
           text: `Hierarchical LOD setup and visual validation work focused on improving scene performance while preserving visual quality.`,
           images: [
-            { src: "Images/3AshesOfCreation/2Hlods/HlodPcitures2.png", title: "HLOD View", text: "" },
-            { src: "Images/3AshesOfCreation/2Hlods/HlodPcitures4.png", title: "HLOD Comparison", text: "" }
+            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_1.gif", title: "HLOD View", text: "" },
+            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_2.gif", title: "HLOD Comparison", text: "" },
+            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_4.png", title: "HLOD Comparison", text: "" },
           ]
         },
         {
           id: "ashes-optimization",
-          title: "Optimization",
+          title: "Shadow Optimization",
+          thumbnail: "Images/3AshesOfCreation/3Optimization/LightingFrontImage.png",
           text: `Optimization-focused technical art work and scene validation to help improve performance while maintaining the intended visual target.`,
           images: [
-            { src: "Images/3AshesOfCreation/3Optimization/HlodPcitures1.png", title: "Optimization View", text: "" },
-            { src: "Images/3AshesOfCreation/3Optimization/HlodPcitures3.png", title: "Optimization Comparison", text: "" }
+            { src: "Images/3AshesOfCreation/3Optimization/AOC_Captures_6.gif", title: "Optimization View", text: "" },
           ]
         }
       ]
