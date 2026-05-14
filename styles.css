@@ -597,10 +597,6 @@ h2 {
 
 .description-panel {
   padding: clamp(16px, 3vw, 28px);
-  max-height: min(34vh, 380px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-gutter: stable;
 }
 
 .description-panel .rich-text {
