@@ -4,7 +4,7 @@ window.PORTFOLIO_DATA = {
     title: "Senior Technical Artist",
     email: "mailto:keegan.edwards@gmail.com",
     linkedin: "https://www.linkedin.com/in/keegan-edwards/",
-    resume: "https://media.licdn.com/dms/image/v2/D562DAQESXdsCxMWtnQ/profile-treasury-document-images_1280/B56ZVnUfPfGsAU-/1/1741195180682?e=1778716800&v=beta&t=D638ywrxIweerKjrIsqBV2RGnJujKU8NjDu6Hzi0f4I"
+    resume: "Keegan_Edwards_Resume_2026.pdf"
   },
   intro: {
     name: "KEEGAN EDWARDS",
@@ -24,6 +24,57 @@ window.PORTFOLIO_DATA = {
   }
   },
   games: [
+    {
+      id: "ashes-of-creation",
+      title: "Ashes of Creation",
+      disclaimerOwner: "Intrepid Studios",
+      bannerPosition: "top",
+      banner: "Images/3AshesOfCreation/Banner.png",
+      projects: [
+        {
+          id: "ashes-harbingers",
+          title: "Harbingers PCG",
+          thumbnail: "Images/3AshesOfCreation/1Harbingers/Harbingers.png",
+          text: `Harbingers was a large-scale world event that spanned three major areas of the map. Tendrils extending from the primary Harbinger impact site progressively transformed the surrounding landscape by expanding corrupted zones in segmented stages. Each segment swapped grass, trees, environment modifiers, and landscape textures into a corrupted biome variant. I used Dynamic Meshes to visualize the bulk of this transformation through RVTs, then broke up the larger material transitions with PCG-driven decal scattering and secondary material variation.
+
+A key requirement was ensuring that the corrupted boundary walls remained continuous as each segment expanded into the next. These walls helped clearly define the play space and gave players readable boundaries when entering corrupted areas. I also built editor-facing PCG tools that allowed designers and artists to visualize these spaces directly in the editor, helping prevent accidental submissions in an incorrect state.
+
+In addition, I partnered with the VFX team to drive Niagara emitters through the PCG toolset. This allowed the entire wall system to use only a small number of particle systems, significantly reducing performance cost. The system also needed to support HLODs, so I created custom material functions that applied the corruption visually at distance for HLOD meshes.`,
+          images: [
+            { src: "Images/3AshesOfCreation/1Harbingers/AOC_Captures_Harbingers_01.gif", title: "Harbingers", text: "" },
+            { src: "Images/3AshesOfCreation/1Harbingers/BirdsEye.png", title: "Harbingers", text: "" },
+          ]
+        },
+        {
+          id: "ashes-hlods",
+          title: "Landscape Oprimization",
+          thumbnail: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_3.png",
+          text: `For landscape optimization, I built tooling to manage and optimize draw distances for grass and foliage. This improved performance and helped resolve visual issues where objects would pop in or out at inconsistent distances. The tool processed foliage and grass type assets together, organized them into their own sections, and allowed users to automatically calculate culling distances based on exposed settings. These calculated values could then be applied across all relevant assets. I also built a test-gym creation tool so changes could be validated in an isolated level before being submitted.
+
+I also worked on the game’s HLOD setup. The previous structure used multiple separate HLOD setups and layers parented to each other, which created performance issues and increased baking complexity. I helped move the system toward a shared hierarchy, reducing the number of generated HLOD meshes while maintaining visually distinct materials at distance. To support this workflow, I built validation tooling that performed a series of checks before HLOD builds could run, helping reduce build errors and avoid common failure cases.
+
+I also began work on a Slack-connected build recovery system that could restart HLOD builds if the build machine stopped unexpectedly, although the game shut down before this feature was fully implemented. In addition to HLOD work, I optimized the landscape material and RVT setup for the open world by adjusting RVT settings, texture sizes, and texture pool assignments while preserving visual fidelity. I also optimized weather events, such as snow, across different performance profiles.`,
+          images: [
+            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_1.gif", title: "HLOD View", text: "" },
+            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_2.gif", title: "HLOD Comparison", text: "" },
+            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_4.png", title: "HLOD Comparison", text: "" },
+          ]
+        },
+        {
+          id: "ashes-optimization",
+          title: "Shadow Optimization",
+          thumbnail: "Images/3AshesOfCreation/3Optimization/LightingFrontImage.png",
+          text: `I built a shadow performance optimization pass in Unreal Engine 5.6 focused on reducing the Shadow GPU cost on low- to mid-spec hardware. This work involved breaking shadow performance into clear tuning categories, including shadow map resolution, cascaded shadow map count, dynamic shadow distance, small-object shadow culling, per-light shadow settings, and per-mesh shadow casting rules.
+
+I created multiple quality profiles, ranging from balanced to aggressive, so the project could scale between visual quality and performance targets. To complete the pass, I identified the highest-impact CVars and editor settings, tested how each change affected GPU cost and visual stability, and defined recommended ranges that could be applied through .ini files.
+
+Before optimization, the low-spec shadow pass was costing roughly **5–6 ms**. After the optimization pass, the cost was reduced to approximately **1.7–2 ms**, bringing the feature much closer to the target performance budget while maintaining acceptable visual quality.`,
+          images: [
+            { src: "Images/3AshesOfCreation/3Optimization/AOC_Captures_6.gif", title: "Optimization View", text: "" },
+          ]
+        }
+      ]
+    },
     {
       id: "multiversus",
       title: "MultiVersus",
@@ -146,44 +197,6 @@ There were also project-specific challenges:
       ]
     },
     {
-      id: "ashes-of-creation",
-      title: "Ashes of Creation",
-      disclaimerOwner: "Intrepid Studios",
-      bannerPosition: "top",
-      banner: "Images/3AshesOfCreation/Banner.png",
-      projects: [
-        {
-          id: "ashes-harbingers",
-          title: "Harbingers PCG",
-          thumbnail: "Images/3AshesOfCreation/1Harbingers/Harbingers.png",
-          text: `Harbinger presentation and supporting technical art work for in-game visual review and production support.`,
-          images: [
-            { src: "Images/3AshesOfCreation/1Harbingers/AOC_Captures_Harbingers_01.gif", title: "Harbingers", text: "" },
-          ]
-        },
-        {
-          id: "ashes-hlods",
-          title: "Landscape Oprimization",
-          thumbnail: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_3.png",
-          text: `Hierarchical LOD setup and visual validation work focused on improving scene performance while preserving visual quality.`,
-          images: [
-            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_1.gif", title: "HLOD View", text: "" },
-            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_2.gif", title: "HLOD Comparison", text: "" },
-            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_4.png", title: "HLOD Comparison", text: "" },
-          ]
-        },
-        {
-          id: "ashes-optimization",
-          title: "Shadow Optimization",
-          thumbnail: "Images/3AshesOfCreation/3Optimization/LightingFrontImage.png",
-          text: `Optimization-focused technical art work and scene validation to help improve performance while maintaining the intended visual target.`,
-          images: [
-            { src: "Images/3AshesOfCreation/3Optimization/AOC_Captures_6.gif", title: "Optimization View", text: "" },
-          ]
-        }
-      ]
-    },
-    {
       id: "the-last-of-us-part-2",
       title: "The Last of Us Part II",
       disclaimerOwner: "Naughty Dog",
@@ -300,6 +313,3 @@ I also sculpted, retopologized, UVed, baked, textured, skinned, and integrated t
     }
   ]
 };
-
-
-
