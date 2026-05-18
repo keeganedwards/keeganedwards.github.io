@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const portfolioData =
   typeof window !== "undefined" ? window.PORTFOLIO_DATA : null;
@@ -199,7 +199,11 @@ function AboutInfo({ data }) {
 function ProjectGallery({ data, project, initialImageIndex, onProjectChange }) {
   const safeInitialIndex = Math.max(0, Math.min(initialImageIndex, project.images.length - 1));
   const [activeIndex, setActiveIndex] = useState(safeInitialIndex);
+  const viewerRef = useRef(null);
   const activeImage = project.images[activeIndex];
+  const activeImageText = typeof activeImage.text === "string" ? activeImage.text.trim() : "";
+  const activeDetailTitle = activeImage.title || project.title;
+  const activeDetailText = activeImageText || project.text || "";
   const projectSequence = data.games.flatMap((game) =>
     game.projects.map((gameProject) => ({ game, project: gameProject }))
   );
@@ -229,8 +233,28 @@ function ProjectGallery({ data, project, initialImageIndex, onProjectChange }) {
     setActiveIndex(nextIndex);
   };
 
+  useEffect(() => {
+    viewerRef.current?.focus();
+  }, []);
+
+  const handleViewerKeyDown = (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      showImage(activeIndex - 1);
+    }
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      showImage(activeIndex + 1);
+    }
+  };
+
   return (
-    <div className="project-viewer">
+    <div
+      className="project-viewer"
+      ref={viewerRef}
+      tabIndex={-1}
+      onKeyDown={handleViewerKeyDown}
+    >
       <div className="viewer-stage">
         <img
           className="viewer-image"
@@ -280,11 +304,11 @@ function ProjectGallery({ data, project, initialImageIndex, onProjectChange }) {
         ))}
       </div>
       <section className="project-detail">
-        <h3>{project.title}</h3>
+        <h3>{activeDetailTitle}</h3>
         <div className="description-panel">
           <div
             className="rich-text"
-            dangerouslySetInnerHTML={{ __html: renderMarkdown(project.text) }}
+            dangerouslySetInnerHTML={{ __html: renderMarkdown(activeDetailText) }}
           />
         </div>
       </section>

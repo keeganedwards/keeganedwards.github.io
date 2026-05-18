@@ -14,7 +14,7 @@ window.PORTFOLIO_DATA = {
   infoWindows: {
     portfolio: {
       title: "Portfolio",
-      text: `Project and image order is controlled by the arrays in content.js. Move an image object up or down in its images array to change gallery order without renaming files.`
+      text: `Project and image order is controlled by the arrays in content.js. Move an image object up or down in its images array to change gallery order without renaming files. Add text to an image object to override the project text while that image is active in the carousel.`
     },
     about: {
     title: "Keegan Edwards",
@@ -55,9 +55,9 @@ I also worked on the game’s HLOD setup. The previous structure used multiple s
 
 I also began work on a Slack-connected build recovery system that could restart HLOD builds if the build machine stopped unexpectedly, although the game shut down before this feature was fully implemented. In addition to HLOD work, I optimized the landscape material and RVT setup for the open world by adjusting RVT settings, texture sizes, and texture pool assignments while preserving visual fidelity. I also optimized weather events, such as snow, across different performance profiles.`,
           images: [
-            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_1.gif", title: "HLOD View", text: "" },
-            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_2.gif", title: "HLOD Comparison", text: "" },
-            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_4.png", title: "HLOD Comparison", text: "" },
+            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_1.gif", title: "Landscape Optimization", text: "" },
+            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_2.gif", title: "Landscape Optimization", text: "" },
+            { src: "Images/3AshesOfCreation/2Hlods/AOC_Captures_HLODS_4.png", title: "Landscape Optimization", text: "" },
           ]
         },
         {
@@ -70,7 +70,7 @@ I created multiple quality profiles, ranging from balanced to aggressive, so the
 
 Before optimization, the low-spec shadow pass was costing roughly **5–6 ms**. After the optimization pass, the cost was reduced to approximately **1.7–2 ms**, bringing the feature much closer to the target performance budget while maintaining acceptable visual quality.`,
           images: [
-            { src: "Images/3AshesOfCreation/3Optimization/AOC_Captures_6.gif", title: "Optimization View", text: "" },
+            { src: "Images/3AshesOfCreation/3Optimization/AOC_Captures_6.gif", title: "Shado Optimization", text: "" },
           ]
         }
       ]
@@ -110,7 +110,7 @@ The system also controlled how actors asynchronously loaded into the scene while
           title: "Menus",
           thumbnail: "Images/1Multiversus/Override/Start.png",
           text: `
-Storefront presentation work including asset previews, hover states, icons, character presentation, reward transitions, and effects.
+Storefront presentation work including asset previews, hover states, icons, character presentation, and reward transitions. 
 
 - Built the store presentation transition and asset management system.
 - Supported reward displays.
@@ -118,13 +118,13 @@ Storefront presentation work including asset previews, hover states, icons, char
 - Built UI materials with clean, non-aliased shapes that artists could author in editor.
 - Built tooling for maintaining reward texture data.`,
           images: [
-            { src: "Images/1Multiversus/3Store/Start.gif", title: "Store Start", text: "" },
+            { src: "Images/1Multiversus/3Store/Start.gif", title: "Main Menus", text: "" },
             { src: "Images/1Multiversus/3Store/Banners.gif", title: "Banners", text: "" },
-            { src: "Images/1Multiversus/3Store/HoverOver.gif", title: "Hover States", text: "" },
+            { src: "Images/1Multiversus/3Store/HoverOver.gif", title: "Character Select", text: "" },
             { src: "Images/1Multiversus/3Store/Icons.gif", title: "Icons", text: "" },
-            { src: "Images/1Multiversus/3Store/IconsAndCharacters.gif", title: "Icons and Characters", text: "" },
+            { src: "Images/1Multiversus/3Store/IconsAndCharacters.gif", title: "Icons for Characters", text: "" },
             { src: "Images/1Multiversus/3Store/RewardTransitions.gif", title: "Reward Transitions", text: "" },
-            { src: "Images/1Multiversus/3Store/VFX.gif", title: "VFX", text: "" }
+            { src: "Images/1Multiversus/3Store/VFX.gif", title: "Ringout VFX Presentation", text: "" }
           ]
         },
         {
@@ -151,8 +151,8 @@ I built a tool that automatically batched through character framing. If an anima
 
 Portraits could be cropped with dedicated cropping tools, allowing quick real-time adjustments that could be reviewed in context. The tool also supported swapping lighting environments and capturing characters in authored poses for splash, store, and promotional work.`,
           images: [
-            { src: "Images/1Multiversus/5IconCreator/ThumbnailTool.gif", title: "Thumbnail Tool", text: "" },
-            { src: "Images/1Multiversus/5IconCreator/IconCreator.gif", title: "Icon Creator", text: "" },
+            { src: "Images/1Multiversus/5IconCreator/ThumbnailTool.gif", title: "Icon Creator", text: "" },
+            { src: "Images/1Multiversus/5IconCreator/IconCreator.gif", title: "Icon Capture", text: "" },
           ]
         }
       ]
@@ -167,7 +167,8 @@ Portraits could be cropped with dedicated cropping tools, allowing quick real-ti
         {
           id: "tlou-part-1-character-pipeline",
           title: "Character Art Pipeline",
-          text: `Problem Statement: We began The Last of Us Part I with a small character art team and an ambitious goal: deliver a remaster with current-generation quality, unique characters, more characters on screen, and higher fidelity with fewer people and resources.
+          images: [
+            { src: "Images/2TheLastOfUsPart1/1CharacterArtPipeline/Pipeline.png", title: "Problem Statement", text: `Problem Statement: We began The Last of Us Part I with a small character art team and an ambitious goal: deliver a remaster with current-generation quality, unique characters, more characters on screen, and higher fidelity with fewer people and resources.
 
 To make that possible, we needed to reduce rework, increase asset reuse, stay organized, and keep collaboration efficient so each artist's time could be used as effectively as possible. Early in production, it became clear that the character art pipeline needed improvements. Coming off The Last of Us Part II, we had identified several problems that needed to be addressed:
 
@@ -181,14 +182,36 @@ There were also project-specific challenges:
 
 - Multiple teams were working across different version control systems and repositories, which made organization more difficult.
 - Large segments of the project eventually needed database and file-location moves.
-- The shift to work from home introduced long latency times in version control, especially when submitting large file updates.`,
-          images: [
-            { src: "Images/2TheLastOfUsPart1/3CharacterAssetBrowser/CabbDemonstration.png", title: "Character Asset Browser", text: "" }
+- The shift to work from home introduced long latency times in version control, especially when submitting large file updates.`},
+            { src: "Images/2TheLastOfUsPart1/1CharacterArtPipeline/Assets.png", title: "Creating an Asset", text: `The asset creation workflow addressed the early organization and reuse problems by turning scan data or concept work into a structured asset package from the start. The Asset Creation Tool generated the required files from templates, applied naming and tagging conventions, initialized ShotGrid/task metadata, and kept the source asset represented in the tracking system.
+
+From there, the asset could branch into base assets, UV variants, geometry variants, and material variants while preserving the relationships needed for production. The Check and Update Asset step then validated the asset, rebuilt scene/model data, fixed common geometry, reference, and naming issues, refreshed icons, and synchronized task tracking data. This reduced manual setup, made asset status easier to read, and helped prevent duplicated or incorrectly configured work from moving downstream.` },
+            { src: "Images/2TheLastOfUsPart1/1CharacterArtPipeline/Assembly.png", title: "Assembling a Character", text: `The Character Asset Browser resolved the "hard to find, hard to review" problem by giving artists a visual way to browse, open, create, reference, skin, build, and preview character assets. Instead of relying on file hunting or separate task-tracking lookups, the browser captured thumbnails, metadata, checkout state, authoring status, and asset relationships in one place.
+
+The Create New Character flow used selected actors to assemble a character scene, create ShotGrid data, generate screenshots, and prepare production data from reusable assets. Update Skeleton rebuilt the character scene and reapplied available skin weights, while View In Game let artists review assembled characters in context. The Asset Info UI and Set Task Status tools kept art, skinning, and approval state visible at both the character and actor level, helping the team avoid duplicated communication and reducing late surprises.` },
+            { src: "Images/2TheLastOfUsPart1/1CharacterArtPipeline/Skinning.png", title: "Skinning Workflow", text: `The skinning workflow was built to reduce the repeated handoff cost between character art and rigging. Once a character was ready, rigging could begin skinning, export skin files per actor, build the relevant game data, view the results in game, and pass the final art forward by setting status through the same pipeline.
+
+The New/Update Geo Variant command helped solve one of the recurring end-of-production problems: small geometry edits that normally caused extra reskinning or required character artist involvement. It sent modified geometry back to the source files, while exported skin data preserved mesh and influence information so work could survive larger geometry changes. That made cast-wide updates less fragile and allowed rigging to verify results in context without blocking on unnecessary manual rebuilds.` },
+            { src: "Images/2TheLastOfUsPart1/1CharacterArtPipeline/OutputToDesign.png", title: "Supporting Design", text: `The design support step closed the loop after characters were built and placed in levels. Design could populate the world using character collections, while the Asset Info CLI reviewed character placement, actor data, and in-game settings that might be incorrect.
+
+This command-line tooling helped resolve the scale and visibility problems from the initial pipeline statement by checking, correcting, and batching settings from configuration files. Instead of relying on manual inspection across many placed characters, the team could validate character data in bulk, catch incorrect actor setup, and keep production changes consistent even as assets moved across repositories, databases, and file locations.` },
           ]
         },
         {
           id: "tlou-part-1-character-asset-browser",
-          title: "Character Asset Browser",
+          title: "Asset Creation",
+          text: `Character asset browsing and production support work focused on making character assets easier to find, review, reuse, and track throughout production.`,
+          images: [
+            { src: "Images/2TheLastOfUsPart1/2AssetCreation/VariantSystem.png", title: "Character Parts Naming Convention", text: "" },
+            { src: "Images/2TheLastOfUsPart1/2AssetCreation/CharacterPartStructure.png", title: "Character Part Structure", text: "" },
+            { src: "Images/2TheLastOfUsPart1/2AssetCreation/SceneStructure.png", title: "Scene Structure", text: "" },
+            { src: "Images/2TheLastOfUsPart1/2AssetCreation/CharacterSceneOutput.png", title: "Character Scene Output", text: "" },
+
+          ]
+        },
+        {
+          id: "tlou-part-1-OtherTools",
+          title: "Character Tools",
           text: `Character asset browsing and production support work focused on making character assets easier to find, review, reuse, and track throughout production.`,
           images: [
             { src: "Images/2TheLastOfUsPart1/3CharacterAssetBrowser/CabbDemonstration.png", title: "Character Asset Browser", text: "" }
@@ -211,15 +234,15 @@ There were also project-specific challenges:
 
 My work focused on Ellie's sweater model and textures. The rest of the character was created by the fantastic artists at Naughty Dog.`,
           images: [
-            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-mid-color.jpg", title: "Mid Color", text: "" },
-            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-full-clay.jpg", title: "Full Clay", text: "" },
-            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-full-color.jpg", title: "Full Color", text: "" },
-            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-masked-color.jpg", title: "Full Masked Color", text: "" },
-            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-mid-clay.jpg", title: "Mid Clay", text: "" },
-            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-mid-masked.jpg", title: "Mid Masked", text: "" },
-            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-side-clay.jpg", title: "Side Clay", text: "" },
-            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-side-color.jpg", title: "Side Color", text: "" },
-            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-side-masked.jpg", title: "Side Masked", text: "" }
+            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-mid-color.jpg", title: "Ellie", text: "" },
+            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-full-clay.jpg", title: "Ellie", text: "" },
+            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-full-color.jpg", title: "Ellie", text: "" },
+            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-masked-color.jpg", title: "Ellie", text: "" },
+            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-mid-clay.jpg", title: "Ellie", text: "" },
+            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-mid-masked.jpg", title: "Ellie", text: "" },
+            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-side-clay.jpg", title: "Ellie", text: "" },
+            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-side-color.jpg", title: "Ellie", text: "" },
+            { src: "Images/4TheLastOfUsPart2/1Ellie/keegan-edwards-side-masked.jpg", title: "Ellie", text: "" }
           ]
         },
         {
@@ -231,15 +254,15 @@ Colleen Larson and Darcy Korch were a tremendous help and took over the last thr
 
 I also built bruising, sunburn, blood, and human ecorche materials for the prisoner scenes. These allowed artists to procedurally paint those elements onto the characters. The ecorche setup let artists paint through layers of human anatomy to add depth to the gore. Blood could be painted dynamically to appear pooled or dried, depending on brush opacity in Painter. Bruising included three variations, each covering different levels of damage. These materials were created in Designer and Painter for use in Substance Painter.`,
           images: [
-            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0000-layer-comp-1.jpg", title: "Prisoners 01", text: "" },
-            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0001-layer-comp-2.jpg", title: "Prisoners 02", text: "" },
-            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0002-layer-comp-3.jpg", title: "Prisoners 03", text: "" },
-            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0003-layer-comp-4.jpg", title: "Prisoners 04", text: "" },
-            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0004-layer-comp-5.jpg", title: "Prisoners 05", text: "" },
-            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0005-layer-comp-6.jpg", title: "Prisoners 06", text: "" },
-            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0006-layer-comp-7.jpg", title: "Prisoners 07", text: "" },
-            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0007-layer-comp-8.jpg", title: "Prisoners 08", text: "" },
-            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0008-layer-comp-9.jpg", title: "Prisoners 09", text: "" }
+            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0000-layer-comp-1.jpg", title: "Prisoners", text: "" },
+            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0001-layer-comp-2.jpg", title: "Prisoners", text: "" },
+            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0002-layer-comp-3.jpg", title: "Prisoners", text: "" },
+            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0003-layer-comp-4.jpg", title: "Prisoners", text: "" },
+            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0004-layer-comp-5.jpg", title: "Prisoners", text: "" },
+            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0005-layer-comp-6.jpg", title: "Prisoners", text: "" },
+            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0006-layer-comp-7.jpg", title: "Prisoners", text: "" },
+            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0007-layer-comp-8.jpg", title: "Prisoners", text: "" },
+            { src: "Images/4TheLastOfUsPart2/2Prisoners/keegan-edwards-prisoners-0008-layer-comp-9.jpg", title: "Prisoners", text: "" }
           ]
         },
         {
@@ -249,8 +272,8 @@ I also built bruising, sunburn, blood, and human ecorche materials for the priso
 
 I did not work on the environment, Ellie, or Ian in this scene. That work was completed by the artists at Naughty Dog.`,
           images: [
-            { src: "Images/4TheLastOfUsPart2/3Prisoners Escape/keegan-edwards-prisonerscaptured-masked.jpg", title: "Captured Masked", text: "" },
-            { src: "Images/4TheLastOfUsPart2/3Prisoners Escape/keegan-edwards-prisonerscaptured.jpg", title: "Captured", text: "" }
+            { src: "Images/4TheLastOfUsPart2/3Prisoners Escape/keegan-edwards-prisonerscaptured-masked.jpg", title: "Captured Prisoners", text: "" },
+            { src: "Images/4TheLastOfUsPart2/3Prisoners Escape/keegan-edwards-prisonerscaptured.jpg", title: "Captured Prisoners", text: "" }
           ]
         }
       ]
@@ -283,7 +306,7 @@ I also built a process for camouflage sets that used secondary UV sets to speed 
             { src: "Images/5CallOfDuty/3Ingame/EnglishDesert.png", title: "English Desert", text: "" },
             { src: "Images/5CallOfDuty/3Ingame/EnglishPilot.png", title: "English Pilot", text: "" },
             { src: "Images/5CallOfDuty/3Ingame/GermanOfficer.png", title: "German Officer", text: "" },
-            { src: "Images/5CallOfDuty/3Ingame/GermanOfficer2.png", title: "German Officer 2", text: "" },
+            { src: "Images/5CallOfDuty/3Ingame/GermanOfficer2.png", title: "German Officer", text: "" },
             { src: "Images/5CallOfDuty/3Ingame/NetherlandsInfantry.png", title: "Netherlands Infantry", text: "" },
             { src: "Images/5CallOfDuty/3Ingame/PolishInfantry.png", title: "Polish Infantry", text: "" },
             { src: "Images/5CallOfDuty/3Ingame/RussianInfantry.png", title: "Russian Infantry", text: "" },

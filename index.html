@@ -80,6 +80,14 @@
         return `Portfolio disclaimer: All IP, artwork, screenshots, and final assets belong to ${safeOwner}. Shown here for portfolio purposes only to describe my individual contributions.`;
       }
 
+      function getImageDetail(project, image) {
+        const imageText = typeof image.text === "string" ? image.text.trim() : "";
+        return {
+          title: image.title || project.title,
+          text: imageText || project.text || ""
+        };
+      }
+
       function renderSite() {
         document.title = `${DATA.brand.name} | ${DATA.brand.title}`;
         document.getElementById("brandName").textContent = DATA.brand.name;
@@ -178,6 +186,7 @@
         const { game, project } = found;
         const safeInitialIndex = Math.max(0, Math.min(initialImageIndex, project.images.length - 1));
         const firstImage = project.images[safeInitialIndex];
+        const firstImageDetail = getImageDetail(project, firstImage);
 
         openModal(
           `${game.title} / ${project.title}`,
@@ -218,9 +227,9 @@
                 `).join("")}
               </div>
               <section class="project-detail">
-                <h3>${escapeHtml(project.title)}</h3>
+                <h3 data-carousel-title>${escapeHtml(firstImageDetail.title)}</h3>
                 <div class="description-panel">
-                  <div class="rich-text">${renderMarkdown(project.text)}</div>
+                  <div class="rich-text" data-carousel-text>${renderMarkdown(firstImageDetail.text)}</div>
                 </div>
                 <div class="portfolio-disclaimer">
                   ${getPortfolioDisclaimer(project.disclaimerOwner || game.disclaimerOwner)}
@@ -242,6 +251,8 @@
         const nextButton = viewer.querySelector("[data-carousel-next]");
         const previousTitle = viewer.querySelector("[data-carousel-prev-title]");
         const nextTitle = viewer.querySelector("[data-carousel-next-title]");
+        const detailTitle = viewer.querySelector("[data-carousel-title]");
+        const detailText = viewer.querySelector("[data-carousel-text]");
         const thumbs = Array.from(viewer.querySelectorAll("[data-carousel-thumb]"));
         const projectSequence = getProjectSequence();
         const currentProjectIndex = projectSequence.findIndex((item) => item.project.id === project.id);
@@ -285,8 +296,11 @@
 
           activeIndex = nextIndex;
           const nextImage = project.images[activeIndex];
+          const nextImageDetail = getImageDetail(project, nextImage);
           image.src = nextImage.src;
           image.alt = nextImage.title || project.title;
+          if (detailTitle) detailTitle.textContent = nextImageDetail.title;
+          if (detailText) detailText.innerHTML = renderMarkdown(nextImageDetail.text);
           thumbs.forEach((thumb, index) => {
             thumb.classList.toggle("active", index === activeIndex);
           });
@@ -304,6 +318,18 @@
             showImage(Number(thumb.dataset.carouselThumb));
           });
         });
+        viewer.addEventListener("keydown", (event) => {
+          if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            showImage(activeIndex - 1);
+          }
+          if (event.key === "ArrowRight") {
+            event.preventDefault();
+            showImage(activeIndex + 1);
+          }
+        });
+        viewer.tabIndex = -1;
+        viewer.focus();
         updateArrowVisibility();
       }
 
