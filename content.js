@@ -1,7 +1,7 @@
 window.PORTFOLIO_DATA = {
   brand: {
     name: "Keegan Edwards",
-    title: "Senior Technical Artist",
+    title: "Keegan Edwards, Senior Technical Artist",
     email: "mailto:keegan.edwards@gmail.com",
     linkedin: "https://www.linkedin.com/in/keegan-edwards/",
     resume: "Keegan_Edwards_Resume_2026.pdf"
