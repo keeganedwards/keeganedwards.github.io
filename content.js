@@ -200,12 +200,15 @@ This command-line tooling helped resolve the scale and visibility problems from 
         {
           id: "tlou-part-1-character-asset-browser",
           title: "Asset Creation",
-          text: `Character asset browsing and production support work focused on making character assets easier to find, review, reuse, and track throughout production.`,
           images: [
-            { src: "Images/2TheLastOfUsPart1/2AssetCreation/VariantSystem.png", title: "Character Parts Naming Convention", text: "" },
-            { src: "Images/2TheLastOfUsPart1/2AssetCreation/CharacterPartStructure.png", title: "Character Part Structure", text: "" },
-            { src: "Images/2TheLastOfUsPart1/2AssetCreation/SceneStructure.png", title: "Scene Structure", text: "" },
-            { src: "Images/2TheLastOfUsPart1/2AssetCreation/CharacterSceneOutput.png", title: "Character Scene Output", text: "" },
+            { src: "Images/2TheLastOfUsPart1/2AssetCreation/VariantSystem.png", title: "Character Parts Naming Convention", text: `To help reduce rework and more accurately predict how long each asset would take to produce, we implemented a system that hierarchically defines asset variations based on Rig Type, UV Variants, Geometry Variants, and Material Variants.
+
+- **Rig Types**: Seen here as the "m" at the start of the asset name, abbreviated for male. These represent variations in rig, body type, or character proportions. This is the most costly type of variation and requires effort from multiple teams to manage. Because of that, rig type changes are often reserved for named characters rather than standard NPCs.
+- **UV Variants (U#)**: These represent any changes to the mesh UVs that may be required to create a new variant, such as a ripped sleeve. Ideally, UV variants should be used as little as possible because they create the most downstream work and reduce reuse across assets.
+- **Geometry Variants (G#)**: These represent any changes to the geometry that do not affect the UVs. This distinction helps artists stay intentional with their geometry edits while maximizing how many material variants can be reused or interchanged.
+- **Material Variants (V#)**: These represent any material or texture changes. They are the fastest variants to produce, and by organizing them this way, we can quickly identify which assets can use these materials without requiring manual inspection.
+
+This system helped artists maintain their work more effectively while also helping the team estimate tasks more accurately by understanding how long each type of variation typically takes to create.` },
 
           ]
         },
@@ -214,7 +217,30 @@ This command-line tooling helped resolve the scale and visibility problems from 
           title: "Character Tools",
           text: `Character asset browsing and production support work focused on making character assets easier to find, review, reuse, and track throughout production.`,
           images: [
-            { src: "Images/2TheLastOfUsPart1/3CharacterAssetBrowser/CabbDemonstration.png", title: "Character Asset Browser", text: "" }
+            { src: "Images/2TheLastOfUsPart1/3CharacterAssetBrowser/CabbDemonstration.png", title: "Character Asset Browser",
+text: `The **Character Asset Browser** is a visual browser for character assembly and scene management. It keeps assets organized and easy to find so artists can focus on creating art rather than managing files or searching through scenes.
+
+The tool provides several actor-level functions:
+
+- **View In Game**: Builds an actor and sends commands to the dev kit to display the actor in a test level.
+- **Build Actor**: Rebuilds the actor data after changes have been made.
+- **Get Asset Info**: Opens the Asset Info interface, which is often used to check assets in and out.
+- **Show In ShotGrid**: Opens the ShotGrid webpage for the asset’s task.
+- **Validate Scene**: Updates the actor icon and task-tracking data for the asset. It also checks for and fixes geometry issues by reconstructing the mesh when needed. This process cleans the scene and model by checking for bad geometry, broken references, and naming issues, then resolving them to help the workflow proceed smoothly.
+- **Update Icon**: Captures the actor within the scene and updates its thumbnail. This can be rerun if visual errors occur.
+- **Update Skeleton**: Rebuilds the character scene and rig references, then applies any existing skin-weight files for the actors. If the mesh has changed, the tool alerts the user after the process but still applies a per-vertex distance method to preserve as much existing work as possible. It also sets up the export sets for the character.
+- **Export Skin**: Exports a skin file for each actor. This contains both mesh data and individual influence data, allowing the work to be preserved even after significant geometry changes.
+- **Create Material Variant**: Opens the selected actor and displays an interface for swapping available materials. This allows artists to quickly preview and create material variations using the tool.
+
+For the character-level portion of the tool, the available functions include:
+- **Add To Character Cart**: Adds the selected actor to the cart for character assembly.
+- **Create New Character**: Uses selected actors to assemble a scene where the character can be viewed. This also creates ShotGrid data and screenshots used by both the browser and task-tracking data. The user can create the ShotGrid data for the character first, then use the tool to generate the character scene from that data. This allows production to assemble characters or stub out the cast using existing assets.
+- **Set Task Status**: Setting the task status on a character within the Character Asset Browser also pushes the actors inside that character to the same stage. Each asset actor and character thumbnail is marked with task information, making the current art and skinning status visible at a glance. For example, character art can set the art task to its current status, even if it has not received final approval yet, while rigging can begin reviewing the skinning on the assets.
+
+These lists are not exaustive but are to give an idea of some of the tools capabilities.               ` },
+            { src: "Images/2TheLastOfUsPart1/2AssetCreation/CharacterPartStructure.png", title: "Asset Creation Tool", text: `The Asset Creation Tool is the first tool artists use when starting a new asset. It allows them to define the asset name and tagging information, then automatically builds the full file hierarchy using template files that artists can set up and modify themselves. The tool also generates a ShotGrid asset, which is used for both task tracking and the Character Asset Browser interface. This allows artists to quickly stub out their work and move directly into asset creation.
+
+This workflow is backed by Asset Info, a module and CLI that allows the broader toolset to understand the project configuration and determine where each asset belongs. Asset Info can also be used to query actor settings and identify where specific actors or characters are used within the game.` },
           ]
         }
       ]
